@@ -5,7 +5,10 @@ export const movies = [
         year: 2010,
         genre: "Sci-Fi",
         rating: 4.8,
-        poster: "https://image.tmdb.org/t/p/w500/9gk7admal4zl67YRxIo2s0tk17o.jpg"
+        poster: "https://image.tmdb.org/t/p/original/8IB2e4r4oVhHnANbnm7O3Tj6tF8.jpg",
+        description: "A thief who steals corporate secrets through the use of dream-sharing technology is given the inverse task of planting an idea into the mind of a C.E.O.",
+        cast: ["Leonardo DiCaprio", "Joseph Gordon-Levitt", "Elliot Page"],
+        platform: "Netflix"
     },
     {
         id: 2,
@@ -13,7 +16,10 @@ export const movies = [
         year: 1972,
         genre: "Crime",
         rating: 4.9,
-        poster: "https://image.tmdb.org/t/p/w500/3bhkrj58Vtu7enYsRolD1fZdja1.jpg"
+        poster: "https://image.tmdb.org/t/p/original/3bhkrj58Vtu7enYsRolD1fZdja1.jpg",
+        description: "The aging patriarch of an organized crime dynasty transfers control of his clandestine empire to his reluctant son.",
+        cast: ["Marlon Brando", "Al Pacino", "James Caan"],
+        platform: "Paramount+"
     },
     {
         id: 3,
@@ -21,7 +27,10 @@ export const movies = [
         year: 1994,
         genre: "Crime",
         rating: 4.7,
-        poster: "https://image.tmdb.org/t/p/w500/d5iIlFn5s0ImszYzBPb8JPIfbXD.jpg"
+        poster: "https://image.tmdb.org/t/p/original/d5iIlFn5s0ImszYzBPb8JPIfbXD.jpg",
+        description: "The lives of two mob hitmen, a boxer, a gangster and his wife intertwine in four tales of violence and redemption.",
+        cast: ["John Travolta", "Uma Thurman", "Samuel L. Jackson"],
+        platform: "Netflix"
     },
     {
         id: 4,
@@ -29,7 +38,10 @@ export const movies = [
         year: 2014,
         genre: "Sci-Fi",
         rating: 4.6,
-        poster: "https://image.tmdb.org/t/p/w500/gEU2QniL6E8AHtMY4kRFW5JSJqb.jpg"
+        poster: "https://image.tmdb.org/t/p/original/bzONet3OeCTz5q9WOkGjVpOHMSR.jpg",
+        description: "A team of explorers travel through a wormhole in space in an attempt to ensure humanity's survival.",
+        cast: ["Matthew McConaughey", "Anne Hathaway", "Jessica Chastain"],
+        platform: "Paramount+"
     },
     {
         id: 5,
@@ -37,7 +49,10 @@ export const movies = [
         year: 2019,
         genre: "Thriller",
         rating: 4.6,
-        poster: "https://image.tmdb.org/t/p/w500/7IiTTgloJzvGI1TAYymCfbfl3vT.jpg"
+        poster: "https://image.tmdb.org/t/p/original/7IiTTgloJzvGI1TAYymCfbfl3vT.jpg",
+        description: "Greed and class discrimination threaten the newly formed symbiotic relationship between the wealthy Park family and the destitute Kim clan.",
+        cast: ["Song Kang-ho", "Lee Sun-kyun", "Cho Yeo-jeong"],
+        platform: "Hulu"
     },
     {
         id: 6,
@@ -45,7 +60,10 @@ export const movies = [
         year: 2001,
         genre: "Animation",
         rating: 4.8,
-        poster: "https://image.tmdb.org/t/p/w500/39wmItIWsg5sZMyRUKGnSxQbUgZ.jpg"
+        poster: "https://image.tmdb.org/t/p/original/gJCRERaZs0NvHktBsfDllc09pE1.jpg",
+        description: "During her family's move to the suburbs, a sullen 10-year-old girl wanders into a world ruled by gods, witches, and spirits.",
+        cast: ["Rumi Hiiragi", "Miyu Irino", "Mari Natsuki"],
+        platform: "HBO Max"
     },
     {
         id: 7,
@@ -53,7 +71,10 @@ export const movies = [
         year: 2008,
         genre: "Action",
         rating: 4.9,
-        poster: "https://image.tmdb.org/t/p/w500/qJ2tW6WMUDux911r6m7haRef0WH.jpg"
+        poster: "https://image.tmdb.org/t/p/original/qJ2tW6WMUDux911r6m7haRef0WH.jpg",
+        description: "When the menace known as the Joker wreaks havoc and chaos on the people of Gotham, Batman must accept one of the greatest psychological and physical tests.",
+        cast: ["Christian Bale", "Heath Ledger", "Aaron Eckhart"],
+        platform: "HBO Max"
     },
     {
         id: 8,
@@ -61,7 +82,10 @@ export const movies = [
         year: 1999,
         genre: "Drama",
         rating: 4.7,
-        poster: "https://image.tmdb.org/t/p/w500/pB8BM7pdSp6B6Ih7Qf4n6a8mi75.jpg"
+        poster: "https://image.tmdb.org/t/p/original/2jVOvPaQkRjt92oTr8zzno4zuz7.jpg",
+        description: "An insomniac office worker and a devil-may-care soapmaker form an underground fight club that evolves into something much more.",
+        cast: ["Brad Pitt", "Edward Norton", "Helena Bonham Carter"],
+        platform: "Hulu"
     },
     {
         id: 9,
@@ -69,7 +93,10 @@ export const movies = [
         year: 1999,
         genre: "Sci-Fi",
         rating: 4.9,
-        poster: "/images/matrix.png"
+        poster: "https://image.tmdb.org/t/p/original/f89U3ADr1oiB1s9GkdPOEpXUk5H.jpg",
+        description: "A computer hacker learns from mysterious rebels about the true nature of his reality and his role in the war against its controllers.",
+        cast: ["Keanu Reeves", "Laurence Fishburne", "Carrie-Anne Moss"],
+        platform: "HBO Max"
     },
     {
         id: 10,
@@ -77,7 +104,10 @@ export const movies = [
         year: 2000,
         genre: "Action",
         rating: 4.8,
-        poster: "/images/gladiator.png"
+        poster: "https://image.tmdb.org/t/p/original/ty8TGRuvJLPUmAR1H1nRIsgwvim.jpg",
+        description: "A former Roman General sets out to exact vengeance against the corrupt emperor who murdered his family and sent him into slavery.",
+        cast: ["Russell Crowe", "Joaquin Phoenix", "Connie Nielsen"],
+        platform: "Paramount+"
     },
     {
         id: 11,
@@ -85,7 +115,10 @@ export const movies = [
         year: 1994,
         genre: "Drama",
         rating: 4.9,
-        poster: "/images/shawshank.png"
+        poster: "https://image.tmdb.org/t/p/original/q6y0Go1tsGEsmtFryDOJo3dEmqu.jpg",
+        description: "Two imprisoned men bond over a number of years, finding solace and eventual redemption through acts of common decency.",
+        cast: ["Tim Robbins", "Morgan Freeman", "Bob Gunton"],
+        platform: "Netflix"
     },
     {
         id: 12,
@@ -93,7 +126,10 @@ export const movies = [
         year: 2018,
         genre: "Animation",
         rating: 4.8,
-        poster: "/images/spiderman.png"
+        poster: "https://image.tmdb.org/t/p/original/iiZZdoQBEYBv6id8su7ImL0oCbD.jpg",
+        description: "Teen Miles Morales becomes Spider-Man of his reality, crossing paths with five counterparts from other dimensions to stop a threat.",
+        cast: ["Shameik Moore", "Jake Johnson", "Hailee Steinfeld"],
+        platform: "Netflix"
     },
     {
         id: 13,
@@ -101,73 +137,342 @@ export const movies = [
         year: 1995,
         genre: "Crime",
         rating: 4.7,
-        poster: "/images/seven.png"
+        poster: "https://image.tmdb.org/t/p/original/6yoghtyTpznpBik8EngEmJskVUO.jpg",
+        description: "Two detectives hunt a serial killer who uses the seven deadly sins as his motives.",
+        cast: ["Morgan Freeman", "Brad Pitt", "Kevin Spacey"],
+        platform: "Netflix"
+    },
+    {
+        id: 14,
+        title: "Forrest Gump",
+        year: 1994,
+        genre: "Drama",
+        rating: 4.8,
+        poster: "https://image.tmdb.org/t/p/original/arw2vcBveWOVZr6pxd9XTd1TdQa.jpg",
+        description: "The presidencies of Kennedy and Johnson, the Vietnam War, and other historical events unfold from the perspective of an Alabama man.",
+        cast: ["Tom Hanks", "Robin Wright", "Gary Sinise"],
+        platform: "Paramount+"
+    },
+    {
+        id: 15,
+        title: "The Lord of the Rings: The Return of the King",
+        year: 2003,
+        genre: "Action",
+        rating: 4.9,
+        poster: "https://image.tmdb.org/t/p/original/rCzpDGLbOoPwLjy3OAm5NUPOTrC.jpg",
+        description: "Gandalf and Aragorn lead the World of Men against Sauron's army to draw his gaze from Frodo and Sam as they approach Mount Doom.",
+        cast: ["Elijah Wood", "Viggo Mortensen", "Ian McKellen"],
+        platform: "HBO Max"
+    },
+    {
+        id: 16,
+        title: "Goodfellas",
+        year: 1990,
+        genre: "Crime",
+        rating: 4.7,
+        poster: "https://image.tmdb.org/t/p/original/aKuFiU82s5ISJpGZp7YkIr3kCUd.jpg",
+        description: "The story of Henry Hill and his life in the mob, covering his relationship with his wife and his partners in crime.",
+        cast: ["Robert De Niro", "Ray Liotta", "Joe Pesci"],
+        platform: "Netflix"
+    },
+    {
+        id: 17,
+        title: "Schindler's List",
+        year: 1993,
+        genre: "Drama",
+        rating: 4.9,
+        poster: "https://image.tmdb.org/t/p/original/sF1U4EUQS8YHUYjNl3pMGNIQyr0.jpg",
+        description: "In German-occupied Poland during World War II, industrialist Oskar Schindler gradually becomes concerned for his Jewish workforce.",
+        cast: ["Liam Neeson", "Ralph Fiennes", "Ben Kingsley"],
+        platform: "Netflix"
+    },
+    {
+        id: 18,
+        title: "The Silence of the Lambs",
+        year: 1991,
+        genre: "Thriller",
+        rating: 4.8,
+        poster: "https://image.tmdb.org/t/p/original/uS9m8OBk1A8eM9I042bx8XXpqAq.jpg",
+        description: "A young FBI cadet must receive the help of an incarcerated cannibal killer to catch another serial killer.",
+        cast: ["Jodie Foster", "Anthony Hopkins", "Scott Glenn"],
+        platform: "Hulu"
+    },
+    {
+        id: 19,
+        title: "Saving Private Ryan",
+        year: 1998,
+        genre: "Action",
+        rating: 4.8,
+        poster: "https://image.tmdb.org/t/p/original/uqx37cS8cpHg8U35f9U5IBlrCV3.jpg",
+        description: "Following the Normandy Landings, a group of U.S. soldiers go behind enemy lines to retrieve a paratrooper whose brothers have been killed.",
+        cast: ["Tom Hanks", "Matt Damon", "Tom Sizemore"],
+        platform: "Paramount+"
+    },
+    {
+        id: 20,
+        title: "The Prestige",
+        year: 2006,
+        genre: "Thriller",
+        rating: 4.7,
+        poster: "https://image.tmdb.org/t/p/original/tRNlZbgNCNOpLpbPEz5L8G8A0JN.jpg",
+        description: "After a tragic accident, two stage magicians engage in a battle to create the ultimate illusion while sacrificing everything they have.",
+        cast: ["Christian Bale", "Hugh Jackman", "Scarlett Johansson"],
+        platform: "Netflix"
+    },
+    {
+        id: 21,
+        title: "Whiplash",
+        year: 2014,
+        genre: "Drama",
+        rating: 4.8,
+        poster: "https://image.tmdb.org/t/p/original/7fn624j5lj3xTme2SgiLCeuedmO.jpg",
+        description: "A promising young drummer enrolls at a cut-throat music conservatory where his dreams of greatness are mentored by an instructor.",
+        cast: ["Miles Teller", "J.K. Simmons", "Melissa Benoist"],
+        platform: "Netflix"
+    },
+    {
+        id: 22,
+        title: "The Green Mile",
+        year: 1999,
+        genre: "Drama",
+        rating: 4.8,
+        poster: "https://image.tmdb.org/t/p/original/velWPhVMQeQKcxggNEU8YmIo52R.jpg",
+        description: "The lives of guards on Death Row are affected by one of their charges: a black man accused of child murder and rape, yet who has a mysterious gift.",
+        cast: ["Tom Hanks", "Michael Clarke Duncan", "David Morse"],
+        platform: "Netflix"
+    },
+    {
+        id: 23,
+        title: "Your Name",
+        year: 2016,
+        genre: "Animation",
+        rating: 4.7,
+        poster: "https://image.tmdb.org/t/p/original/q719jXXEzOoYaps6babgKnONONX.jpg",
+        description: "Two strangers find themselves linked in a bizarre way. When a connection forms, will distance be the only thing to keep them apart?",
+        cast: ["Ryûnosuke Kamiki", "Mone Kamishiraishi", "Ryô Narita"],
+        platform: "Crunchyroll"
+    },
+    {
+        id: 24,
+        title: "Avengers: Endgame",
+        year: 2019,
+        genre: "Action",
+        rating: 4.6,
+        poster: "https://image.tmdb.org/t/p/original/or06FN3Dka5tukK1e9sl16pB3iy.jpg",
+        description: "After the devastating events of Infinity War, the Avengers assemble once more to reverse Thanos' actions and restore balance to the universe.",
+        cast: ["Robert Downey Jr.", "Chris Evans", "Mark Ruffalo"],
+        platform: "Disney+"
+    },
+    {
+        id: 25,
+        title: "Joker",
+        year: 2019,
+        genre: "Thriller",
+        rating: 4.5,
+        poster: "https://image.tmdb.org/t/p/original/udDclJoHjfjb8Ekgsd4FDteOkCU.jpg",
+        description: "In Gotham City, mentally troubled comedian Arthur Fleck is disregarded and mistreated by society. He then embarks on a downward spiral of revolution.",
+        cast: ["Joaquin Phoenix", "Robert De Niro", "Zazie Beetz"],
+        platform: "HBO Max"
     }
 ];
 
 export const series = [
     {
         id: 101,
+        title: "Gravity Falls",
+        year: 2012,
+        genre: "Animation",
+        rating: 4.9,
+        poster: "https://image.tmdb.org/t/p/original/qj5DZDMzOarWUWcKxNCUX1WNWO7.jpg",
+        description: "Twin siblings Dipper and Mabel Pines spend the summer at their great-uncle's tourist trap in the enigmatic Gravity Falls, Oregon.",
+        cast: ["Jason Ritter", "Kristen Schaal", "Alex Hirsch"],
+        platform: "Disney+"
+    },
+    {
+        id: 102,
+        title: "The Office",
+        year: 2005,
+        genre: "Comedy",
+        rating: 4.9,
+        poster: "https://image.tmdb.org/t/p/original/7DJKHzAi83BmQrWLrYYOqcoKfhR.jpg",
+        description: "A mockumentary on a group of typical office workers, where the workday consists of ego clashes, inappropriate behavior, and tedium.",
+        cast: ["Steve Carell", "Rainn Wilson", "John Krasinski"],
+        platform: "Peacock"
+    },
+    {
+        id: 103,
         title: "Breaking Bad",
         year: 2008,
         genre: "Crime",
         rating: 4.9,
-        poster: "https://image.tmdb.org/t/p/w500/ggFHVNu6YYI5L9pCfOacjizRGt.jpg"
+        poster: "https://image.tmdb.org/t/p/original/ggFHVNu6YYI5L9pCfOacjizRGt.jpg",
+        description: "A high school chemistry teacher diagnosed with terminal lung cancer turns to manufacturing and selling methamphetamine.",
+        cast: ["Bryan Cranston", "Aaron Paul", "Anna Gunn"],
+        platform: "Netflix"
     },
     {
-        id: 102,
+        id: 104,
         title: "Stranger Things",
         year: 2016,
         genre: "Sci-Fi",
         rating: 4.5,
-        poster: "https://image.tmdb.org/t/p/w500/49WJfeN0moxb9IPfGn8AIqMGskD.jpg"
+        poster: "https://image.tmdb.org/t/p/original/49WJfeN0moxb9IPfGn8AIqMGskD.jpg",
+        description: "When a young boy disappears, his mother, a police chief and his friends must confront terrifying supernatural forces.",
+        cast: ["Millie Bobby Brown", "Finn Wolfhard", "Winona Ryder"],
+        platform: "Netflix"
     },
     {
-        id: 103,
+        id: 105,
         title: "The Crown",
         year: 2016,
         genre: "Drama",
         rating: 4.4,
-        poster: "https://image.tmdb.org/t/p/w500/1Hq9k5k5D2P9q8z9Q8k8k8k8k8.jpg" // Placeholder
+        poster: "https://image.tmdb.org/t/p/original/1M876KPjulVwppEpldhdc8V4o68.jpg",
+        description: "Follows the political rivalries and romance of Queen Elizabeth II's reign and the events that shaped the second half of the 20th century.",
+        cast: ["Claire Foy", "Olivia Colman", "Imelda Staunton"],
+        platform: "Netflix"
     },
     {
-        id: 104,
+        id: 106,
         title: "The Mandalorian",
         year: 2019,
         genre: "Sci-Fi",
         rating: 4.7,
-        poster: "/images/mandalorian.png"
+        poster: "https://image.tmdb.org/t/p/original/sWgBv7LV2PRoQgkxwlibdGXKz1S.jpg",
+        description: "The travels of a lone bounty hunter in the outer reaches of the galaxy, far from the authority of the New Republic.",
+        cast: ["Pedro Pascal", "Katee Sackhoff", "Giancarlo Esposito"],
+        platform: "Disney+"
     },
     {
-        id: 105,
+        id: 107,
         title: "Sherlock",
         year: 2010,
         genre: "Crime",
         rating: 4.8,
-        poster: "/images/sherlock.png"
+        poster: "https://image.tmdb.org/t/p/original/7WTsnHkbA0FaG6R9twfFde0I9hl.jpg",
+        description: "A modern update finds the famous sleuth and his doctor partner solving crime in 21st century London.",
+        cast: ["Benedict Cumberbatch", "Martin Freeman", "Una Stubbs"],
+        platform: "Netflix"
     },
     {
-        id: 106,
+        id: 108,
         title: "The Queen's Gambit",
         year: 2020,
         genre: "Drama",
         rating: 4.8,
-        poster: "/images/queens_gambit.png"
+        poster: "https://image.tmdb.org/t/p/original/zU0htwkhNvBQdVSIKB9s6hgVeFK.jpg",
+        description: "Orphaned at the tender age of nine, prodigious introvert Beth Harmon discovers and masters the game of chess in 1960s USA.",
+        cast: ["Anya Taylor-Joy", "Chloe Pirrie", "Bill Camp"],
+        platform: "Netflix"
     },
     {
-        id: 107,
+        id: 109,
         title: "Arcane",
         year: 2021,
         genre: "Animation",
         rating: 4.9,
-        poster: "https://placehold.co/500x750?text=Arcane"
+        poster: "https://image.tmdb.org/t/p/original/fqldf2t8ztc9aiwn3k6mlX3tvRT.jpg",
+        description: "Set in utopian Piltover and the oppressed underground of Zaun, the story follows the origins of two iconic League champions.",
+        cast: ["Hailee Steinfeld", "Ella Purnell", "Kevin Alejandro"],
+        platform: "Netflix"
     },
     {
-        id: 108,
+        id: 110,
         title: "Mindhunter",
         year: 2017,
         genre: "Crime",
         rating: 4.6,
-        poster: "https://placehold.co/500x750?text=Mindhunter"
+        poster: "https://image.tmdb.org/t/p/original/fbKE87mojpIETWepSbD5Qt741fp.jpg",
+        description: "In the late 1970s, two FBI agents expand criminal science by delving into the psychology of murder.",
+        cast: ["Jonathan Groff", "Holt McCallany", "Anna Torv"],
+        platform: "Netflix"
+    },
+    {
+        id: 111,
+        title: "Game of Thrones",
+        year: 2011,
+        genre: "Drama",
+        rating: 4.7,
+        poster: "https://image.tmdb.org/t/p/original/1XS1oqL89opfnbLl8WnZY1O1uJx.jpg",
+        description: "Nine noble families fight for control over the lands of Westeros, while an ancient enemy returns after being dormant for millennia.",
+        cast: ["Emilia Clarke", "Peter Dinklage", "Kit Harington"],
+        platform: "HBO Max"
+    },
+    {
+        id: 112,
+        title: "The Last of Us",
+        year: 2023,
+        genre: "Drama",
+        rating: 4.8,
+        poster: "https://image.tmdb.org/t/p/original/uKvVjHNqB5VmOrdxqAt2F7J78ED.jpg",
+        description: "Twenty years after a fungal outbreak ravages the planet, survivors Joel and Ellie embark on a brutal journey across America.",
+        cast: ["Pedro Pascal", "Bella Ramsey", "Anna Torv"],
+        platform: "HBO Max"
+    },
+    {
+        id: 113,
+        title: "Rick and Morty",
+        year: 2013,
+        genre: "Animation",
+        rating: 4.7,
+        poster: "https://image.tmdb.org/t/p/original/gdIrmf2DdY5mgN6ycVP0XlzKzbE.jpg",
+        description: "An animated series that follows the exploits of a super scientist and his not-so-bright grandson.",
+        cast: ["Justin Roiland", "Chris Parnell", "Spencer Grammer"],
+        platform: "HBO Max"
+    },
+    {
+        id: 114,
+        title: "Better Call Saul",
+        year: 2015,
+        genre: "Crime",
+        rating: 4.8,
+        poster: "https://image.tmdb.org/t/p/original/fC2HDm5t0kHl7mTm7jxMR31b7by.jpg",
+        description: "The trials and tribulations of criminal lawyer Jimmy McGill in the time before he established his strip-mall law office in Albuquerque.",
+        cast: ["Bob Odenkirk", "Rhea Seehorn", "Jonathan Banks"],
+        platform: "Netflix"
+    },
+    {
+        id: 115,
+        title: "Dark",
+        year: 2017,
+        genre: "Sci-Fi",
+        rating: 4.8,
+        poster: "https://image.tmdb.org/t/p/original/56v2KjBlU4XaOv9rVYEQypROD7P.jpg",
+        description: "A family saga with a supernatural twist, set in a German town where the disappearance of two young children exposes relationships.",
+        cast: ["Louis Hofmann", "Karoline Eichhorn", "Lisa Vicari"],
+        platform: "Netflix"
+    },
+    {
+        id: 116,
+        title: "Chernobyl",
+        year: 2019,
+        genre: "Drama",
+        rating: 4.9,
+        poster: "https://image.tmdb.org/t/p/original/hlLXt2tOPT6RRnjiUmoxyG1LTFi.jpg",
+        description: "In April 1986, an explosion at the Chernobyl nuclear power plant becomes one of the world's worst man-made catastrophes.",
+        cast: ["Jared Harris", "Stellan Skarsgård", "Emily Watson"],
+        platform: "HBO Max"
+    },
+    {
+        id: 117,
+        title: "The Boys",
+        year: 2019,
+        genre: "Action",
+        rating: 4.6,
+        poster: "https://image.tmdb.org/t/p/original/2zmTngn1tYC1AvfnrFLhxeD82hz.jpg",
+        description: "A group of vigilantes set out to take down corrupt superheroes who abuse their superpowers.",
+        cast: ["Karl Urban", "Jack Quaid", "Antony Starr"],
+        platform: "Prime Video"
+    },
+    {
+        id: 118,
+        title: "Avatar: The Last Airbender",
+        year: 2005,
+        genre: "Animation",
+        rating: 4.9,
+        poster: "https://image.tmdb.org/t/p/original/9RQhVb3r3mCMqYVhLoCu4EvuipP.jpg",
+        description: "In a war-torn world of elemental magic, a young boy reawakens to undertake a dangerous mystic quest to fulfill his destiny as the Avatar.",
+        cast: ["Zach Tyler", "Mae Whitman", "Jack De Sena"],
+        platform: "Netflix"
     }
 ];

@@ -39,8 +39,45 @@ function init() {
   // Initialize navbar with renderPage callback
   initializeNavbar(renderPage);
 
-  // Keyboard shortcut for search
+  // Search functionality
   const searchInput = document.getElementById('global-search');
+
+  searchInput.addEventListener('input', (e) => {
+    const query = e.target.value.toLowerCase().trim();
+
+    if (query.length === 0) {
+      // If search is empty, re-render current page
+      renderPage(state.currentPage);
+      return;
+    }
+
+    // Search in current data
+    const mainContent = document.getElementById('main-content');
+    mainContent.innerHTML = '';
+
+    const header = document.createElement('div');
+    header.className = 'section-header';
+    header.innerHTML = `<h2 class="section-title">Search Results for "${e.target.value}"</h2>`;
+    mainContent.appendChild(header);
+
+    // Import data
+    import('./data/movies.js').then(({ movies, series }) => {
+      const allItems = [...movies, ...series];
+      const results = allItems.filter(item =>
+        item.title.toLowerCase().includes(query)
+      );
+
+      if (results.length === 0) {
+        mainContent.innerHTML += `<p style="color: var(--text-muted);">No results found.</p>`;
+      } else {
+        import('./pages/shared.js').then(({ renderGrid }) => {
+          mainContent.appendChild(renderGrid(results, false, renderPage));
+        });
+      }
+    });
+  });
+
+  // Keyboard shortcut for search
   document.addEventListener('keydown', (e) => {
     if (e.key === '/' && document.activeElement !== searchInput) {
       e.preventDefault();
