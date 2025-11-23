@@ -1,0 +1,35 @@
+# Smart Watchlist Website Tasks
+
+- [x] Project Initialization <!-- id: 0 -->
+    - [x] Initialize Vite + Vanilla project <!-- id: 1 -->
+    - [x] Setup basic folder structure (css, js, assets) <!-- id: 2 -->
+- [x] Design System & Core UI (Rule 1: Consistency) <!-- id: 3 -->
+    - [x] Create `style.css` with CSS variables (Colors, Typography, Spacing) <!-- id: 4 -->
+    - [x] Implement Navigation Bar (Movies, Series, Lists, Users, Profile) <!-- id: 5 -->
+    - [x] Create responsive layout shell <!-- id: 6 -->
+- [x] Feature Implementation <!-- id: 7 -->
+    - [x] **Movies & Series Page** <!-- id: 8 -->
+        - [x] Mock data generation <!-- id: 9 -->
+        - [x] Grid display of items <!-- id: 10 -->
+        - [x] Filtering logic (Genre, Year, Rating) (Rule 7: Internal Locus of Control) <!-- id: 11 -->
+    - [x] **Lists & Interactions** <!-- id: 12 -->
+        - [x] "Add to Watchlist" functionality with Toast Feedback (Rule 3: Informative Feedback) <!-- id: 13 -->
+        - [x] Undo functionality for actions (Rule 6: Easy Reversal) <!-- id: 14 -->
+        - [x] Keyboard shortcuts (e.g., '/' to search) (Rule 2: Shortcuts) <!-- id: 15 -->
+    - [x] **Profile & User Flow** <!-- id: 16 -->
+        - [x] Simple Profile View <!-- id: 17 -->
+        - [x] Error handling simulation (Rule 5: Error Prevention) <!-- id: 18 -->
+- [x] **Advanced Navigation & Rating System** <!-- id: 22 -->
+    - [x] Implement Dropdown Menus for Movies, Series, Lists <!-- id: 23 -->
+    - [x] Create "My Movies" section with Movies/Series separation <!-- id: 24 -->
+    - [x] Implement Rating & Commenting Modal <!-- id: 25 -->
+    - [x] Save rated items to "My Movies" <!-- id: 26 -->
+- [ ] Verification & Polish <!-- id: 19 -->
+    - [ ] Verify all 8 Golden Rules are represented <!-- id: 20 -->
+    - [ ] Final UI Polish (Animations, Transitions) <!-- id: 21 -->
+
+- [ ] Add More Movies and Series <!-- id: 27 -->
+    - [x] Plan new content (movies/series list) <!-- id: 28 -->
+    - [x] Generate images for new content <!-- id: 29 -->
+    - [x] Update data file with new entries <!-- id: 30 -->
+    - [/] Verify changes <!-- id: 31 -->

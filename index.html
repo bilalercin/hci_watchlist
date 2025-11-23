@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Smart Watchlist</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;600;700&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="./src/style.css">
+</head>
+
+<body>
+  <div id="app">
+    <nav class="navbar">
+      <div class="nav-brand">Watchlist.</div>
+      <ul class="nav-links">
+        <li class="dropdown-parent">
+          <a href="#" data-page="movies" class="active">Movies</a>
+          <div class="dropdown">
+            <a href="#" data-filter="Sci-Fi" data-type="movies">Sci-Fi</a>
+            <a href="#" data-filter="Crime" data-type="movies">Crime</a>
+            <a href="#" data-filter="Drama" data-type="movies">Drama</a>
+            <a href="#" data-filter="Action" data-type="movies">Action</a>
+            <a href="#" data-filter="Animation" data-type="movies">Animation</a>
+          </div>
+        </li>
+        <li class="dropdown-parent">
+          <a href="#" data-page="series">Series</a>
+          <div class="dropdown">
+            <a href="#" data-filter="Crime" data-type="series">Crime</a>
+            <a href="#" data-filter="Sci-Fi" data-type="series">Sci-Fi</a>
+            <a href="#" data-filter="Drama" data-type="series">Drama</a>
+            <a href="#" data-filter="Animation" data-type="series">Animation</a>
+          </div>
+        </li>
+        <li class="dropdown-parent">
+          <a href="#" data-page="lists">Lists</a>
+          <div class="dropdown">
+            <a href="#" data-page="lists">Watchlist</a>
+            <a href="#" data-page="my-movies">My Movies</a>
+          </div>
+        </li>
+        <li><a href="#" data-page="profile">Profile</a></li>
+      </ul>
+      <div class="nav-actions">
+        <div class="search-container">
+          <input type="text" id="global-search" placeholder="Search... (/)" />
+          <span class="shortcut-hint">/</span>
+        </div>
+      </div>
+    </nav>
+
+    <main id="main-content">
+      <!-- Dynamic Content will be loaded here -->
+    </main>
+
+    <div id="toast-container"></div>
+  </div>
+  <script type="module" src="/src/main.js"></script>
+</body>
+
+</html>
