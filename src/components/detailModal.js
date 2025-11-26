@@ -41,9 +41,6 @@ export function showDetailModal(item, renderPageCallback, openRatingModalCallbac
           <button class="detail-action-btn watchlist-btn ${isInWatchlist ? 'in-watchlist' : ''}" id="modal-watchlist-btn">
             ${isInWatchlist ? '✓ In Watchlist' : '+ Add to Watchlist'}
           </button>
-          <button class="detail-action-btn rate-btn" id="modal-rate-btn">
-            ★ Rate
-          </button>
         </div>
       </div>
     </div>
@@ -116,14 +113,7 @@ export function showDetailModal(item, renderPageCallback, openRatingModalCallbac
     if (renderPageCallback) renderPageCallback(state.currentPage);
   });
 
-  // Rate button handler
-  const rateBtn = modal.querySelector('#modal-rate-btn');
-  rateBtn.addEventListener('click', () => {
-    closeModal();
-    if (openRatingModalCallback) {
-      openRatingModalCallback(item, renderPageCallback);
-    }
-  });
+
 
   // Animate in
   requestAnimationFrame(() => {

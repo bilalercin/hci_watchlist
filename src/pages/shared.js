@@ -22,30 +22,21 @@ export function openRatingModal(item, renderPageCallback) {
     width: 90%; max-width: 400px; border: 1px solid var(--bg-tertiary);
   `;
 
-  // Create star rating HTML with half-star support
-  let starsHtml = '<div class="star-rating" id="star-container">';
-  for (let i = 1; i <= 5; i++) {
-    const fullFilled = i <= Math.floor(currentRating) ? 'filled' : '';
-    const halfFilled = (i - 0.5) === currentRating ? 'half-filled' : '';
-    starsHtml += `
-      <span class="star-wrapper" data-star="${i}">
-        <span class="star half-star ${halfFilled}" data-value="${i - 0.5}">★</span>
-        <span class="star full-star ${fullFilled}" data-value="${i}">★</span>
-      </span>
-    `;
-  }
-  starsHtml += '</div>';
-  starsHtml += '<div id="rating-display" style="text-align: center; margin-top: 8px; color: var(--warning-color); font-weight: 600; min-height: 24px;">' +
-    (currentRating > 0 ? `${currentRating.toFixed(1)} / 5.0` : 'Click to rate') + '</div>';
+  // Create star rating HTML
+  const starsHtml = `
+    <div style="display: flex; flex-direction: column; align-items: center; gap: 12px;">
+      <div class="star-rating" id="star-rating-container"></div>
+      <div id="rating-display">${currentRating > 0 ? currentRating.toFixed(1) + ' / 5.0' : 'Click to rate'}</div>
+    </div>
+  `;
 
   modal.innerHTML = `
-    <h3 style="margin-bottom: 16px;">Rate ${item.title}</h3>
-    <div style="margin-bottom: 16px;">
-      <label style="display: block; margin-bottom: 8px; color: var(--text-secondary);">Rating</label>
+    <h3 style="margin-bottom: 24px; text-align: center;">Rate ${item.title}</h3>
+    <div style="margin-bottom: 24px; display: flex; justify-content: center;">
       ${starsHtml}
     </div>
     <div style="margin-bottom: 24px;">
-      <label style="display: block; margin-bottom: 8px; color: var(--text-secondary);">Comment</label>
+      <label style="display: block; margin-bottom: 8px; color: var(--text-secondary); text-align: left;">Comment</label>
       <textarea id="comment-input" rows="4" style="width: 100%; padding: 8px; background: var(--bg-tertiary); border: none; color: white; border-radius: 4px;">${currentComment}</textarea>
     </div>
     <div style="display: flex; justify-content: flex-end; gap: 8px;">
@@ -57,70 +48,53 @@ export function openRatingModal(item, renderPageCallback) {
   modalOverlay.appendChild(modal);
   document.body.appendChild(modalOverlay);
 
-  const starContainer = document.getElementById('star-container');
-  const stars = starContainer.querySelectorAll('.star');
-  const starWrappers = starContainer.querySelectorAll('.star-wrapper');
+  const starContainer = document.getElementById('star-rating-container');
   const ratingDisplay = document.getElementById('rating-display');
 
-  // Update visual state of stars
-  const updateStars = (rating) => {
-    stars.forEach(star => {
-      const val = parseFloat(star.dataset.value);
-      star.classList.remove('filled', 'half-filled', 'hover');
+  // Set initial width
+  starContainer.style.setProperty('--rating-width', `${(currentRating / 5) * 100}%`);
 
-      if (val <= rating) {
-        if (val % 1 === 0.5 && val === rating) {
-          star.classList.add('half-filled');
-        } else if (val <= Math.floor(rating) || val === rating) {
-          star.classList.add('filled');
-        }
-      }
-    });
-  };
+  // Handle mouse interaction
+  starContainer.addEventListener('mousemove', (e) => {
+    const rect = starContainer.getBoundingClientRect();
+    const x = e.clientX - rect.left;
+    const percent = Math.min(100, Math.max(0, (x / rect.width) * 100));
 
-  // Initial star state
-  updateStars(currentRating);
+    // Snap to 0.5 (10% increments)
+    let rating = Math.ceil((percent / 100) * 10) / 2;
+    rating = Math.max(0.5, Math.min(5, rating)); // Min 0.5, Max 5
 
-  // Hover effect on wrapper (Rule 3: Feedback)
-  starWrappers.forEach(wrapper => {
-    wrapper.addEventListener('mousemove', (e) => {
-      const rect = wrapper.getBoundingClientRect();
-      const x = e.clientX - rect.left;
-      const isLeftHalf = x < rect.width / 2;
-      const starNum = parseInt(wrapper.dataset.star);
-      const hoverValue = isLeftHalf ? starNum - 0.5 : starNum;
+    const snapPercent = (rating / 5) * 100;
+    starContainer.style.setProperty('--rating-width', `${snapPercent}%`);
 
-      ratingDisplay.textContent = `${hoverValue.toFixed(1)} / 5.0`;
-      ratingDisplay.style.color = 'var(--accent-color)';
+    ratingDisplay.textContent = `${rating.toFixed(1)} / 5.0`;
+    ratingDisplay.style.color = '#FFD700';
+  });
 
-      // Show hover state
-      stars.forEach(star => {
-        const val = parseFloat(star.dataset.value);
-        star.classList.remove('hover');
-        if (val <= hoverValue) {
-          star.classList.add('hover');
-        }
-      });
-    });
+  starContainer.addEventListener('mouseleave', () => {
+    const snapPercent = (currentRating / 5) * 100;
+    starContainer.style.setProperty('--rating-width', `${snapPercent}%`);
+    ratingDisplay.textContent = currentRating > 0 ? `${currentRating.toFixed(1)} / 5.0` : 'Click to rate';
+    ratingDisplay.style.color = currentRating > 0 ? '#FFD700' : 'var(--text-muted)';
+  });
 
-    wrapper.addEventListener('mouseleave', () => {
-      stars.forEach(s => s.classList.remove('hover'));
-      ratingDisplay.textContent = currentRating > 0 ? `${currentRating.toFixed(1)} / 5.0` : 'Click to rate';
-      ratingDisplay.style.color = 'var(--warning-color)';
-    });
+  starContainer.addEventListener('click', (e) => {
+    const rect = starContainer.getBoundingClientRect();
+    const x = e.clientX - rect.left;
 
-    // Click to select rating (Rule 3: Feedback)
-    wrapper.addEventListener('click', (e) => {
-      const rect = wrapper.getBoundingClientRect();
-      const x = e.clientX - rect.left;
-      const isLeftHalf = x < rect.width / 2;
-      const starNum = parseInt(wrapper.dataset.star);
-      currentRating = isLeftHalf ? starNum - 0.5 : starNum;
+    // Calculate rating based on click position
+    let rating = Math.ceil((x / rect.width) * 10) / 2;
+    currentRating = Math.max(0.5, Math.min(5, rating));
 
-      updateStars(currentRating);
-      ratingDisplay.textContent = `${currentRating.toFixed(1)} / 5.0`;
-      ratingDisplay.style.color = 'var(--warning-color)';
-    });
+    const snapPercent = (currentRating / 5) * 100;
+    starContainer.style.setProperty('--rating-width', `${snapPercent}%`);
+
+    // Pulse animation
+    starContainer.style.transform = 'scale(1.1)';
+    setTimeout(() => starContainer.style.transform = 'scale(1)', 150);
+
+    ratingDisplay.textContent = `${currentRating.toFixed(1)} / 5.0`;
+    ratingDisplay.style.color = '#FFD700';
   });
 
 
@@ -168,8 +142,14 @@ export function createCard(item, isMyMovies = false, renderPageCallback) {
 
   let userRatingHtml = '';
   if (isMyMovies && item.userRating) {
-    userRatingHtml = `<div style="color: var(--warning-color); margin-bottom: 8px;">Your Rating: ${'★'.repeat(item.userRating)}</div>
-                      <div style="font-size: 0.85rem; color: var(--text-secondary); margin-bottom: 12px; font-style: italic;">"${item.userComment}"</div>`;
+    const ratingPercent = (item.userRating / 5) * 100;
+    userRatingHtml = `
+      <div style="margin-bottom: 8px;">
+        <div style="color: var(--text-secondary); font-size: 0.8rem; margin-bottom: 4px;">Your Rating:</div>
+        <div class="star-rating small" style="--rating-width: ${ratingPercent}%;"></div>
+      </div>
+      <div style="font-size: 0.85rem; color: var(--text-secondary); margin-bottom: 12px; font-style: italic;">"${item.userComment}"</div>
+    `;
   }
 
   card.innerHTML = `
@@ -188,8 +168,9 @@ export function createCard(item, isMyMovies = false, renderPageCallback) {
       ${userRatingHtml}
       <div style="margin-top: auto; display: flex; gap: 8px;">
         <button class="action-btn ${extraClass}" style="flex: 1; font-size: 0.8rem;">${btnText}</button>
-        <button class="rate-btn" style="padding: 8px; background: var(--bg-tertiary); border: none; border-radius: 4px; cursor: pointer; color: var(--text-primary);">★</button>
-      </div>
+      <button class="rate-btn" style="padding: 8px; background: var(--bg-tertiary); border: none; border-radius: 4px; cursor: pointer; color: var(--text-primary); display: flex; align-items: center; justify-content: center;">
+        ★
+      </button>
     </div>
   `;
 

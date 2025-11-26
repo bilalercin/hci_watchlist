@@ -13,10 +13,21 @@ export const state = {
         lastName: '',
         photo: 'https://ui-avatars.com/api/?name=User&background=random'
     },
+    customLists: [], // User created lists
     isEditingProfile: false
 };
 
 // State update functions
+export function createList(name, items) {
+    const newList = {
+        id: Date.now(), // Simple ID
+        name: name,
+        items: items,
+        createdAt: new Date().toISOString()
+    };
+    state.customLists.push(newList);
+    return newList;
+}
 export function addToWatchlist(item) {
     if (state.watchlist.find(i => i.id === item.id)) {
         return false; // Already exists

@@ -27,7 +27,7 @@ function renderPage(pageName) {
       renderMyMoviesPage(renderPage);
       break;
     case 'profile':
-      renderProfilePage();
+      renderProfilePage(renderPage);
       break;
     default:
       renderMoviesPage(renderPage);
