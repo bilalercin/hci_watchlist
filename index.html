@@ -5,7 +5,7 @@
   <meta charset="UTF-8" />
   <link rel="icon" type="image/svg+xml" href="/vite.svg" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Smart Watchlist</title>
+  <title>WatchFlow</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link
@@ -17,7 +17,10 @@
 <body>
   <div id="app">
     <nav class="navbar">
-      <div class="nav-brand">Watchlist.</div>
+      <a href="#" class="nav-brand" data-page="movies">
+        <img src="/logo.svg" alt="WatchFlow Logo" class="nav-logo">
+        WatchFlow
+      </a>
       <ul class="nav-links">
         <li class="dropdown-parent">
           <a href="#" data-page="movies" class="active">Movies</a>
@@ -43,12 +46,16 @@
         <li class="dropdown-parent">
           <a href="#" data-page="lists">Lists</a>
           <div class="dropdown">
-            <a href="#" data-page="lists">Watchlist</a>
-            <a href="#" data-page="my-movies">My Movies</a>
+            <a href="#" data-page="lists" data-i18n="watchlist">Watchlist</a>
+            <a href="#" data-page="my-movies" data-i18n="myMovies">My Movies</a>
           </div>
         </li>
       </ul>
       <div class="nav-actions">
+        <button id="theme-toggle" class="btn-secondary nav-btn" title="Toggle Theme">☀️</button>
+        <button id="blue-light-toggle" class="btn-secondary nav-btn" title="Blue Light Filter">💡</button>
+        <button id="shortcuts-toggle" class="btn-secondary nav-btn" title="Keyboard Shortcuts">⌨️</button>
+        <button id="lang-toggle" class="btn-secondary nav-btn">TR | EN</button>
         <div class="search-container">
           <input type="text" id="global-search" placeholder="Search... (/)" />
           <span class="shortcut-hint">/</span>

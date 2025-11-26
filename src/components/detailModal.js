@@ -1,8 +1,8 @@
 // Detail Modal Component
 import { state, addToWatchlist, removeFromWatchlist } from '../utils/state.js';
 import { showToast } from './toast.js';
-import { showSuccessFeedback, showErrorFeedback } from '../utils/feedback.js';
-import { setModalCloseHandler, clearModalCloseHandler } from '../main.js';
+
+import { t } from '../utils/translations.js';
 
 export function showDetailModal(item, renderPageCallback, openRatingModalCallback) {
   // Check if item is in watchlist
@@ -27,21 +27,22 @@ export function showDetailModal(item, renderPageCallback, openRatingModalCallbac
         <div class="detail-meta">
           <span class="detail-year">${item.year}</span>
           <span class="detail-divider">•</span>
-          <span class="detail-genre">${item.genre}</span>
+          <span class="detail-genre">${t(item.genre)}</span>
           <span class="detail-divider">•</span>
           <span class="detail-rating">★ ${item.rating}</span>
         </div>
-        ${item.platform ? `<div class="detail-platform">Available on: <strong>${item.platform}</strong></div>` : ''}
-        ${item.description ? `<p class="detail-description">${item.description}</p>` : ''}
+        ${item.director ? `<div class="detail-director-small">${t('directedBy')} <strong>${item.director}</strong></div>` : ''}
+        ${item.platform ? `<div class="detail-platform">${t('availableOn')}: <strong>${item.platform}</strong></div>` : ''}
+        ${(state.language === 'tr' && item.descriptionTr) ? `<p class="detail-description">${item.descriptionTr}</p>` : (item.description ? `<p class="detail-description">${item.description}</p>` : '')}
         ${item.cast && item.cast.length > 0 ? `
           <div class="detail-cast">
-            <h3>Cast</h3>
+            <h3>${t('cast')}</h3>
             <p>${item.cast.join(', ')}</p>
           </div>
         ` : ''}
         <div class="detail-actions">
           <button class="detail-action-btn watchlist-btn ${isInWatchlist ? 'in-watchlist' : ''}" id="modal-watchlist-btn">
-            ${isInWatchlist ? '✓ In Watchlist' : '+ Add to Watchlist'}
+            ${isInWatchlist ? t('inWatchlist') : t('addToWatchlist')}
           </button>
         </div>
       </div>
@@ -58,12 +59,7 @@ export function showDetailModal(item, renderPageCallback, openRatingModalCallbac
   const closeModal = () => {
     modalOverlay.remove();
     document.body.style.overflow = '';
-    clearModalCloseHandler(); // Rule #2: Clear ESC handler
-    document.removeEventListener('keydown', handleEscape);
   };
-
-  // Register modal close handler for global shortcuts - Rule #2
-  setModalCloseHandler(closeModal);
 
   // Close button
   modal.querySelector('.detail-modal-close').addEventListener('click', closeModal);
@@ -79,6 +75,7 @@ export function showDetailModal(item, renderPageCallback, openRatingModalCallbac
   const handleEscape = (e) => {
     if (e.key === 'Escape') {
       closeModal();
+      document.removeEventListener('keydown', handleEscape);
     }
   };
   document.addEventListener('keydown', handleEscape);
@@ -91,15 +88,15 @@ export function showDetailModal(item, renderPageCallback, openRatingModalCallbac
     if (isNowInWatchlist) {
       // Remove from watchlist
       removeFromWatchlist(item.id);
-      watchlistBtn.textContent = '+ Add to Watchlist';
+      watchlistBtn.textContent = t('addToWatchlist');
       watchlistBtn.classList.remove('in-watchlist');
-      showToast(`Removed ${item.title} from watchlist`, 'undo', {
-        label: 'Undo',
+      showToast(t('removedFromWatchlist', { title: item.title }), 'undo', {
+        label: t('undo'),
         callback: () => {
           addToWatchlist(item);
-          watchlistBtn.textContent = '✓ In Watchlist';
+          watchlistBtn.textContent = t('inWatchlist');
           watchlistBtn.classList.add('in-watchlist');
-          showToast(`Restored ${item.title}`, 'success');
+          showToast(t('restored', { title: item.title }), 'success');
           if (renderPageCallback) renderPageCallback(state.currentPage);
         }
       });
@@ -107,11 +104,11 @@ export function showDetailModal(item, renderPageCallback, openRatingModalCallbac
       // Add to watchlist
       const added = addToWatchlist(item);
       if (added) {
-        watchlistBtn.textContent = '✓ In Watchlist';
+        watchlistBtn.textContent = t('inWatchlist');
         watchlistBtn.classList.add('in-watchlist');
-        showToast(`Added ${item.title} to watchlist`, 'success');
+        showToast(t('addedToWatchlist', { title: item.title }), 'success');
       } else {
-        showToast(`${item.title} is already in your watchlist`, 'warning');
+        showToast(t('alreadyInWatchlist', { title: item.title }), 'warning');
       }
     }
 

@@ -3,6 +3,9 @@ import { state, addToWatchlist, removeFromWatchlist, undoRemove, addOrUpdateRati
 import { showToast } from '../components/toast.js';
 import { showDetailModal } from '../components/detailModal.js';
 
+import { t } from '../utils/translations.js';
+import { movies, series } from '../data/movies.js';
+
 // Rating Modal
 export function openRatingModal(item, renderPageCallback) {
   const existing = state.myMovies.find(i => i.id === item.id);
@@ -26,22 +29,22 @@ export function openRatingModal(item, renderPageCallback) {
   const starsHtml = `
     <div style="display: flex; flex-direction: column; align-items: center; gap: 12px;">
       <div class="star-rating" id="star-rating-container"></div>
-      <div id="rating-display">${currentRating > 0 ? currentRating.toFixed(1) + ' / 5.0' : 'Click to rate'}</div>
+      <div id="rating-display">${currentRating > 0 ? currentRating.toFixed(1) + ' / 5.0' : t('rate')}</div>
     </div>
   `;
 
   modal.innerHTML = `
-    <h3 style="margin-bottom: 24px; text-align: center;">Rate ${item.title}</h3>
+    <h3 style="margin-bottom: 24px; text-align: center;">${t('rate')} ${item.title}</h3>
     <div style="margin-bottom: 24px; display: flex; justify-content: center;">
       ${starsHtml}
     </div>
     <div style="margin-bottom: 24px;">
-      <label style="display: block; margin-bottom: 8px; color: var(--text-secondary); text-align: left;">Comment</label>
+      <label style="display: block; margin-bottom: 8px; color: var(--text-secondary); text-align: left;">${t('comment')}</label>
       <textarea id="comment-input" rows="4" style="width: 100%; padding: 8px; background: var(--bg-tertiary); border: none; color: white; border-radius: 4px;">${currentComment}</textarea>
     </div>
     <div style="display: flex; justify-content: flex-end; gap: 8px;">
-      <button id="cancel-btn" class="btn-cancel">Cancel</button>
-      <button id="save-btn" class="btn-primary">Save</button>
+      <button id="cancel-btn" class="btn-cancel">${t('cancelBtn')}</button>
+      <button id="save-btn" class="btn-primary">${t('saveChanges')}</button>
     </div>
   `;
 
@@ -74,7 +77,7 @@ export function openRatingModal(item, renderPageCallback) {
   starContainer.addEventListener('mouseleave', () => {
     const snapPercent = (currentRating / 5) * 100;
     starContainer.style.setProperty('--rating-width', `${snapPercent}%`);
-    ratingDisplay.textContent = currentRating > 0 ? `${currentRating.toFixed(1)} / 5.0` : 'Click to rate';
+    ratingDisplay.textContent = currentRating > 0 ? `${currentRating.toFixed(1)} / 5.0` : t('rate');
     ratingDisplay.style.color = currentRating > 0 ? '#FFD700' : 'var(--text-muted)';
   });
 
@@ -114,7 +117,12 @@ export function openRatingModal(item, renderPageCallback) {
     }
 
     addOrUpdateRating(item, currentRating, comment);
-    showToast(`Saved rating for ${item.title}`, 'success');
+    showToast(t('ratingSaved'), 'success', {
+      label: t('view'),
+      callback: () => {
+        if (renderPageCallback) renderPageCallback('my-movies');
+      }
+    });
     modalOverlay.remove();
     if (state.currentPage === 'my-movies') renderPageCallback('my-movies');
   };
@@ -137,7 +145,8 @@ export function createCard(item, isMyMovies = false, renderPageCallback) {
   card.onmouseleave = () => card.style.transform = 'translateY(0)';
 
   const isWatched = state.watchlist.find(i => i.id === item.id);
-  const btnText = isWatched ? 'Remove' : 'Add Watchlist';
+  // Shorten button text for better fit
+  const btnText = isWatched ? t('remove') : t('addToWatchlist');
   const extraClass = isWatched ? 'remove' : '';
 
   let userRatingHtml = '';
@@ -163,12 +172,12 @@ export function createCard(item, isMyMovies = false, renderPageCallback) {
       <h3 style="font-size: 1rem; margin-bottom: 4px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">${item.title}</h3>
       <div style="display: flex; justify-content: space-between; color: var(--text-muted); font-size: 0.85rem; margin-bottom: 12px;">
         <span>${item.year}</span>
-        <span>${item.genre}</span>
+        <span>${t(item.genre)}</span>
       </div>
       ${userRatingHtml}
       <div style="margin-top: auto; display: flex; gap: 8px;">
         <button class="action-btn ${extraClass}" style="flex: 1; font-size: 0.8rem;">${btnText}</button>
-      <button class="rate-btn" style="padding: 8px; background: var(--bg-tertiary); border: none; border-radius: 4px; cursor: pointer; color: var(--text-primary); display: flex; align-items: center; justify-content: center;">
+      <button class="rate-btn" data-tooltip="${t('rate')}" style="padding: 8px; background: var(--bg-tertiary); border: none; border-radius: 4px; cursor: pointer; color: var(--text-primary); display: flex; align-items: center; justify-content: center;">
         ★
       </button>
     </div>
@@ -180,12 +189,12 @@ export function createCard(item, isMyMovies = false, renderPageCallback) {
     if (isWatched) {
       const removed = removeFromWatchlist(item.id);
       if (removed) {
-        showToast(`Removed ${removed.title}`, 'undo', {
-          label: 'Undo',
+        showToast(t('removedFromWatchlist', { title: removed.title }), 'undo', {
+          label: t('undo'),
           callback: () => {
             undoRemove();
             renderPageCallback(state.currentPage);
-            showToast(`Restored ${removed.title}`, 'success');
+            showToast(t('restored', { title: removed.title }), 'success');
           }
         });
         renderPageCallback(state.currentPage);
@@ -193,9 +202,9 @@ export function createCard(item, isMyMovies = false, renderPageCallback) {
     } else {
       const added = addToWatchlist(item);
       if (added) {
-        showToast(`Added ${item.title} to watchlist`, 'success');
+        showToast(t('addedToWatchlist', { title: item.title }), 'success');
       } else {
-        showToast(`${item.title} is already in your watchlist`, 'warning');
+        showToast(t('alreadyInWatchlist', { title: item.title }), 'warning');
       }
       renderPageCallback(state.currentPage);
     }
@@ -228,4 +237,76 @@ export function renderGrid(items, isMyMovies = false, renderPageCallback) {
     });
   }
   return grid;
+}
+
+// Selection Modal (for Favorites)
+export function showSelectionModal(type, callback) {
+  const items = type === 'movie'
+    ? movies
+    : series;
+
+  const modalOverlay = document.createElement('div');
+  modalOverlay.className = 'list-modal-overlay';
+
+  const modal = document.createElement('div');
+  modal.className = 'list-modal';
+
+  modal.innerHTML = `
+      <div class="list-modal-header">
+          <h3>${type === 'movie' ? t('selectMovie') : t('selectSeries')}</h3>
+          <button class="detail-modal-close" style="position: static;">&times;</button>
+      </div>
+      
+      <div class="list-modal-body">
+          <div class="form-group" style="margin-bottom: 8px;">
+              <input type="text" id="selection-search" class="form-input" placeholder="${t('searchPlaceholder')}" style="padding: 8px;">
+          </div>
+
+          <div id="selection-list" class="selection-list-container">
+              <!-- Items will be rendered here -->
+          </div>
+      </div>
+  `;
+
+  modalOverlay.appendChild(modal);
+  document.body.appendChild(modalOverlay);
+
+  requestAnimationFrame(() => modalOverlay.classList.add('active'));
+
+  const closeModal = () => modalOverlay.remove();
+  modal.querySelector('.detail-modal-close').onclick = closeModal;
+
+  const renderList = (filterText = '') => {
+    const listContainer = document.getElementById('selection-list');
+    listContainer.innerHTML = '';
+    const filtered = items.filter(item => item.title.toLowerCase().includes(filterText.toLowerCase()));
+
+    filtered.forEach(item => {
+      const itemEl = document.createElement('div');
+      itemEl.className = 'selection-item';
+      itemEl.innerHTML = `
+              <img src="${item.poster}" class="selection-thumb">
+              <div class="selection-info">
+                  <div class="selection-title">${item.title}</div>
+                  <div class="selection-meta">${item.year} • ${t(item.genre)}</div>
+              </div>
+              <button class="add-item-btn">
+                  +
+              </button>
+          `;
+
+      itemEl.onclick = () => {
+        callback(item);
+        closeModal();
+      };
+
+      listContainer.appendChild(itemEl);
+    });
+  };
+
+  renderList();
+
+  document.getElementById('selection-search').addEventListener('input', (e) => {
+    renderList(e.target.value);
+  });
 }

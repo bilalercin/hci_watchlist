@@ -7,6 +7,8 @@ export const movies = [
         rating: 4.8,
         poster: "https://image.tmdb.org/t/p/original/8IB2e4r4oVhHnANbnm7O3Tj6tF8.jpg",
         description: "A thief who steals corporate secrets through the use of dream-sharing technology is given the inverse task of planting an idea into the mind of a C.E.O.",
+        descriptionTr: "Rüya paylaşım teknolojisini kullanarak şirket sırlarını çalan bir hırsıza, bir CEO'nun zihnine bir fikir yerleştirme görevi verilir.",
+        director: "Christopher Nolan",
         cast: ["Leonardo DiCaprio", "Joseph Gordon-Levitt", "Elliot Page"],
         platform: "Netflix"
     },
@@ -18,6 +20,8 @@ export const movies = [
         rating: 4.9,
         poster: "https://image.tmdb.org/t/p/original/3bhkrj58Vtu7enYsRolD1fZdja1.jpg",
         description: "The aging patriarch of an organized crime dynasty transfers control of his clandestine empire to his reluctant son.",
+        descriptionTr: "Organize suç hanedanının yaşlanan patriği, gizli imparatorluğunun kontrolünü isteksiz oğluna devreder.",
+        director: "Francis Ford Coppola",
         cast: ["Marlon Brando", "Al Pacino", "James Caan"],
         platform: "Paramount+"
     },
@@ -29,6 +33,8 @@ export const movies = [
         rating: 4.7,
         poster: "https://image.tmdb.org/t/p/original/d5iIlFn5s0ImszYzBPb8JPIfbXD.jpg",
         description: "The lives of two mob hitmen, a boxer, a gangster and his wife intertwine in four tales of violence and redemption.",
+        descriptionTr: "İki tetikçi, bir boksör, bir gangster ve karısının hayatları, şiddet ve kefaret dolu dört hikayede iç içe geçer.",
+        director: "Quentin Tarantino",
         cast: ["John Travolta", "Uma Thurman", "Samuel L. Jackson"],
         platform: "Netflix"
     },
@@ -40,6 +46,8 @@ export const movies = [
         rating: 4.6,
         poster: "https://image.tmdb.org/t/p/original/bzONet3OeCTz5q9WOkGjVpOHMSR.jpg",
         description: "A team of explorers travel through a wormhole in space in an attempt to ensure humanity's survival.",
+        descriptionTr: "Bir grup kaşif, insanlığın hayatta kalmasını sağlamak için uzaydaki bir solucan deliğinden geçer.",
+        director: "Christopher Nolan",
         cast: ["Matthew McConaughey", "Anne Hathaway", "Jessica Chastain"],
         platform: "Paramount+"
     },
@@ -51,6 +59,8 @@ export const movies = [
         rating: 4.6,
         poster: "https://image.tmdb.org/t/p/original/7IiTTgloJzvGI1TAYymCfbfl3vT.jpg",
         description: "Greed and class discrimination threaten the newly formed symbiotic relationship between the wealthy Park family and the destitute Kim clan.",
+        descriptionTr: "Açgözlülük ve sınıf ayrımcılığı, zengin Park ailesi ile yoksul Kim klanı arasında yeni oluşan simbiyotik ilişkiyi tehdit eder.",
+        director: "Bong Joon-ho",
         cast: ["Song Kang-ho", "Lee Sun-kyun", "Cho Yeo-jeong"],
         platform: "Hulu"
     },
@@ -62,6 +72,8 @@ export const movies = [
         rating: 4.8,
         poster: "https://image.tmdb.org/t/p/original/gJCRERaZs0NvHktBsfDllc09pE1.jpg",
         description: "During her family's move to the suburbs, a sullen 10-year-old girl wanders into a world ruled by gods, witches, and spirits.",
+        descriptionTr: "Ailesinin banliyöye taşınması sırasında, somurtkan 10 yaşındaki bir kız, tanrılar, cadılar ve ruhların yönettiği bir dünyaya girer.",
+        director: "Hayao Miyazaki",
         cast: ["Rumi Hiiragi", "Miyu Irino", "Mari Natsuki"],
         platform: "HBO Max"
     },
@@ -73,6 +85,8 @@ export const movies = [
         rating: 4.9,
         poster: "https://image.tmdb.org/t/p/original/qJ2tW6WMUDux911r6m7haRef0WH.jpg",
         description: "When the menace known as the Joker wreaks havoc and chaos on the people of Gotham, Batman must accept one of the greatest psychological and physical tests.",
+        descriptionTr: "Joker olarak bilinen tehdit Gotham halkına kaos ve yıkım getirdiğinde, Batman en büyük psikolojik ve fiziksel testlerden birini kabul etmelidir.",
+        director: "Christopher Nolan",
         cast: ["Christian Bale", "Heath Ledger", "Aaron Eckhart"],
         platform: "HBO Max"
     },
@@ -84,6 +98,8 @@ export const movies = [
         rating: 4.7,
         poster: "https://image.tmdb.org/t/p/original/2jVOvPaQkRjt92oTr8zzno4zuz7.jpg",
         description: "An insomniac office worker and a devil-may-care soapmaker form an underground fight club that evolves into something much more.",
+        descriptionTr: "Uykusuz bir ofis çalışanı ve umursamaz bir sabun üreticisi, çok daha fazlasına dönüşen bir yeraltı dövüş kulübü kurar.",
+        director: "David Fincher",
         cast: ["Brad Pitt", "Edward Norton", "Helena Bonham Carter"],
         platform: "Hulu"
     },
@@ -95,6 +111,8 @@ export const movies = [
         rating: 4.9,
         poster: "https://image.tmdb.org/t/p/original/f89U3ADr1oiB1s9GkdPOEpXUk5H.jpg",
         description: "A computer hacker learns from mysterious rebels about the true nature of his reality and his role in the war against its controllers.",
+        descriptionTr: "Bir bilgisayar korsanı, gizemli isyancılardan gerçekliğinin doğasını ve kontrolcülerine karşı savaştaki rolünü öğrenir.",
+        director: "The Wachowskis",
         cast: ["Keanu Reeves", "Laurence Fishburne", "Carrie-Anne Moss"],
         platform: "HBO Max"
     },
@@ -106,6 +124,8 @@ export const movies = [
         rating: 4.8,
         poster: "https://image.tmdb.org/t/p/original/ty8TGRuvJLPUmAR1H1nRIsgwvim.jpg",
         description: "A former Roman General sets out to exact vengeance against the corrupt emperor who murdered his family and sent him into slavery.",
+        descriptionTr: "Eski bir Romalı General, ailesini öldüren ve onu köleliğe gönderen yozlaşmış imparatordan intikam almak için yola çıkar.",
+        director: "Ridley Scott",
         cast: ["Russell Crowe", "Joaquin Phoenix", "Connie Nielsen"],
         platform: "Paramount+"
     },
@@ -117,6 +137,8 @@ export const movies = [
         rating: 4.9,
         poster: "https://image.tmdb.org/t/p/original/q6y0Go1tsGEsmtFryDOJo3dEmqu.jpg",
         description: "Two imprisoned men bond over a number of years, finding solace and eventual redemption through acts of common decency.",
+        descriptionTr: "İki mahkum, yıllar boyunca bağ kurar, ortak nezaket eylemleriyle teselli ve nihai kefaret bulur.",
+        director: "Frank Darabont",
         cast: ["Tim Robbins", "Morgan Freeman", "Bob Gunton"],
         platform: "Netflix"
     },
@@ -128,6 +150,8 @@ export const movies = [
         rating: 4.8,
         poster: "https://image.tmdb.org/t/p/original/iiZZdoQBEYBv6id8su7ImL0oCbD.jpg",
         description: "Teen Miles Morales becomes Spider-Man of his reality, crossing paths with five counterparts from other dimensions to stop a threat.",
+        descriptionTr: "Genç Miles Morales, kendi gerçekliğinin Örümcek Adamı olur ve bir tehdidi durdurmak için diğer boyutlardan beş meslektaşıyla yolları kesişir.",
+        director: "Bob Persichetti, Peter Ramsey, Rodney Rothman",
         cast: ["Shameik Moore", "Jake Johnson", "Hailee Steinfeld"],
         platform: "Netflix"
     },
@@ -139,6 +163,8 @@ export const movies = [
         rating: 4.7,
         poster: "https://image.tmdb.org/t/p/original/6yoghtyTpznpBik8EngEmJskVUO.jpg",
         description: "Two detectives hunt a serial killer who uses the seven deadly sins as his motives.",
+        descriptionTr: "İki dedektif, yedi ölümcül günahı motif olarak kullanan bir seri katilin peşine düşer.",
+        director: "David Fincher",
         cast: ["Morgan Freeman", "Brad Pitt", "Kevin Spacey"],
         platform: "Netflix"
     },
@@ -150,6 +176,8 @@ export const movies = [
         rating: 4.8,
         poster: "https://image.tmdb.org/t/p/original/arw2vcBveWOVZr6pxd9XTd1TdQa.jpg",
         description: "The presidencies of Kennedy and Johnson, the Vietnam War, and other historical events unfold from the perspective of an Alabama man.",
+        descriptionTr: "Kennedy ve Johnson başkanlıkları, Vietnam Savaşı ve diğer tarihi olaylar, Alabamalı bir adamın bakış açısından gelişir.",
+        director: "Robert Zemeckis",
         cast: ["Tom Hanks", "Robin Wright", "Gary Sinise"],
         platform: "Paramount+"
     },
@@ -161,6 +189,8 @@ export const movies = [
         rating: 4.9,
         poster: "https://image.tmdb.org/t/p/original/rCzpDGLbOoPwLjy3OAm5NUPOTrC.jpg",
         description: "Gandalf and Aragorn lead the World of Men against Sauron's army to draw his gaze from Frodo and Sam as they approach Mount Doom.",
+        descriptionTr: "Gandalf ve Aragorn, Frodo ve Sam Hüküm Dağı'na yaklaşırken Sauron'un dikkatini dağıtmak için İnsanlar Dünyası'nı Sauron'un ordusuna karşı yönetir.",
+        director: "Peter Jackson",
         cast: ["Elijah Wood", "Viggo Mortensen", "Ian McKellen"],
         platform: "HBO Max"
     },
@@ -172,6 +202,8 @@ export const movies = [
         rating: 4.7,
         poster: "https://image.tmdb.org/t/p/original/aKuFiU82s5ISJpGZp7YkIr3kCUd.jpg",
         description: "The story of Henry Hill and his life in the mob, covering his relationship with his wife and his partners in crime.",
+        descriptionTr: "Henry Hill'in mafyadaki hayatı, karısı ve suç ortaklarıyla olan ilişkisini kapsayan hikayesi.",
+        director: "Martin Scorsese",
         cast: ["Robert De Niro", "Ray Liotta", "Joe Pesci"],
         platform: "Netflix"
     },
@@ -183,6 +215,8 @@ export const movies = [
         rating: 4.9,
         poster: "https://image.tmdb.org/t/p/original/sF1U4EUQS8YHUYjNl3pMGNIQyr0.jpg",
         description: "In German-occupied Poland during World War II, industrialist Oskar Schindler gradually becomes concerned for his Jewish workforce.",
+        descriptionTr: "İkinci Dünya Savaşı sırasında Alman işgali altındaki Polonya'da, sanayici Oskar Schindler Yahudi işçileri için giderek daha fazla endişelenmeye başlar.",
+        director: "Steven Spielberg",
         cast: ["Liam Neeson", "Ralph Fiennes", "Ben Kingsley"],
         platform: "Netflix"
     },
@@ -194,6 +228,8 @@ export const movies = [
         rating: 4.8,
         poster: "https://image.tmdb.org/t/p/original/uS9m8OBk1A8eM9I042bx8XXpqAq.jpg",
         description: "A young FBI cadet must receive the help of an incarcerated cannibal killer to catch another serial killer.",
+        descriptionTr: "Genç bir FBI öğrencisi, başka bir seri katili yakalamak için hapsedilmiş bir yamyam katilden yardım almalıdır.",
+        director: "Jonathan Demme",
         cast: ["Jodie Foster", "Anthony Hopkins", "Scott Glenn"],
         platform: "Hulu"
     },
@@ -205,6 +241,8 @@ export const movies = [
         rating: 4.8,
         poster: "https://image.tmdb.org/t/p/original/uqx37cS8cpHg8U35f9U5IBlrCV3.jpg",
         description: "Following the Normandy Landings, a group of U.S. soldiers go behind enemy lines to retrieve a paratrooper whose brothers have been killed.",
+        descriptionTr: "Normandiya Çıkarması'nın ardından, bir grup ABD askeri, kardeşleri öldürülen bir paraşütçüyü kurtarmak için düşman hatlarının gerisine gider.",
+        director: "Steven Spielberg",
         cast: ["Tom Hanks", "Matt Damon", "Tom Sizemore"],
         platform: "Paramount+"
     },
@@ -216,6 +254,8 @@ export const movies = [
         rating: 4.7,
         poster: "https://image.tmdb.org/t/p/original/tRNlZbgNCNOpLpbPEz5L8G8A0JN.jpg",
         description: "After a tragic accident, two stage magicians engage in a battle to create the ultimate illusion while sacrificing everything they have.",
+        descriptionTr: "Trajik bir kazadan sonra, iki sahne sihirbazı, sahip oldukları her şeyi feda ederken nihai illüzyonu yaratmak için bir savaşa girerler.",
+        director: "Christopher Nolan",
         cast: ["Christian Bale", "Hugh Jackman", "Scarlett Johansson"],
         platform: "Netflix"
     },
@@ -227,6 +267,8 @@ export const movies = [
         rating: 4.8,
         poster: "https://image.tmdb.org/t/p/original/7fn624j5lj3xTme2SgiLCeuedmO.jpg",
         description: "A promising young drummer enrolls at a cut-throat music conservatory where his dreams of greatness are mentored by an instructor.",
+        descriptionTr: "Gelecek vaat eden genç bir davulcu, büyüklük hayallerinin bir eğitmen tarafından yönlendirildiği acımasız bir müzik konservatuarına kaydolur.",
+        director: "Damien Chazelle",
         cast: ["Miles Teller", "J.K. Simmons", "Melissa Benoist"],
         platform: "Netflix"
     },
@@ -238,6 +280,8 @@ export const movies = [
         rating: 4.8,
         poster: "https://image.tmdb.org/t/p/original/velWPhVMQeQKcxggNEU8YmIo52R.jpg",
         description: "The lives of guards on Death Row are affected by one of their charges: a black man accused of child murder and rape, yet who has a mysterious gift.",
+        descriptionTr: "İdam Koğuşu'ndaki gardiyanların hayatları, suçlamalarından biri tarafından etkilenir: çocuk cinayeti ve tecavüzle suçlanan ancak gizemli bir yeteneği olan siyah bir adam.",
+        director: "Frank Darabont",
         cast: ["Tom Hanks", "Michael Clarke Duncan", "David Morse"],
         platform: "Netflix"
     },
@@ -249,6 +293,8 @@ export const movies = [
         rating: 4.7,
         poster: "https://image.tmdb.org/t/p/original/q719jXXEzOoYaps6babgKnONONX.jpg",
         description: "Two strangers find themselves linked in a bizarre way. When a connection forms, will distance be the only thing to keep them apart?",
+        descriptionTr: "İki yabancı kendilerini tuhaf bir şekilde birbirine bağlı bulur. Bir bağ oluştuğunda, onları ayrı tutan tek şey mesafe mi olacak?",
+        director: "Makoto Shinkai",
         cast: ["Ryûnosuke Kamiki", "Mone Kamishiraishi", "Ryô Narita"],
         platform: "Crunchyroll"
     },
@@ -260,6 +306,8 @@ export const movies = [
         rating: 4.6,
         poster: "https://image.tmdb.org/t/p/original/or06FN3Dka5tukK1e9sl16pB3iy.jpg",
         description: "After the devastating events of Infinity War, the Avengers assemble once more to reverse Thanos' actions and restore balance to the universe.",
+        descriptionTr: "Sonsuzluk Savaşı'nın yıkıcı olaylarından sonra, Yenilmezler Thanos'un eylemlerini tersine çevirmek ve evrene dengeyi geri getirmek için bir kez daha toplanır.",
+        director: "Anthony Russo, Joe Russo",
         cast: ["Robert Downey Jr.", "Chris Evans", "Mark Ruffalo"],
         platform: "Disney+"
     },
@@ -271,6 +319,8 @@ export const movies = [
         rating: 4.5,
         poster: "https://image.tmdb.org/t/p/original/udDclJoHjfjb8Ekgsd4FDteOkCU.jpg",
         description: "In Gotham City, mentally troubled comedian Arthur Fleck is disregarded and mistreated by society. He then embarks on a downward spiral of revolution.",
+        descriptionTr: "Gotham City'de, zihinsel sorunları olan komedyen Arthur Fleck toplum tarafından dışlanır ve kötü muamele görür. Daha sonra bir devrim sarmalına girer.",
+        director: "Todd Phillips",
         cast: ["Joaquin Phoenix", "Robert De Niro", "Zazie Beetz"],
         platform: "HBO Max"
     }
@@ -285,6 +335,8 @@ export const series = [
         rating: 4.9,
         poster: "https://image.tmdb.org/t/p/original/qj5DZDMzOarWUWcKxNCUX1WNWO7.jpg",
         description: "Twin siblings Dipper and Mabel Pines spend the summer at their great-uncle's tourist trap in the enigmatic Gravity Falls, Oregon.",
+        descriptionTr: "İkiz kardeşler Dipper ve Mabel Pines, yazı Oregon'daki gizemli Gravity Falls'ta büyük amcalarının turist tuzağında geçirirler.",
+        director: "Alex Hirsch",
         cast: ["Jason Ritter", "Kristen Schaal", "Alex Hirsch"],
         platform: "Disney+"
     },
@@ -296,6 +348,8 @@ export const series = [
         rating: 4.9,
         poster: "https://image.tmdb.org/t/p/original/7DJKHzAi83BmQrWLrYYOqcoKfhR.jpg",
         description: "A mockumentary on a group of typical office workers, where the workday consists of ego clashes, inappropriate behavior, and tedium.",
+        descriptionTr: "İş gününün ego çatışmaları, uygunsuz davranışlar ve can sıkıntısından oluştuğu bir grup tipik ofis çalışanı üzerine bir sahte belgesel.",
+        director: "Greg Daniels",
         cast: ["Steve Carell", "Rainn Wilson", "John Krasinski"],
         platform: "Peacock"
     },
@@ -307,6 +361,8 @@ export const series = [
         rating: 4.9,
         poster: "https://image.tmdb.org/t/p/original/ggFHVNu6YYI5L9pCfOacjizRGt.jpg",
         description: "A high school chemistry teacher diagnosed with terminal lung cancer turns to manufacturing and selling methamphetamine.",
+        descriptionTr: "Ölümcül akciğer kanseri teşhisi konan bir lise kimya öğretmeni, metamfetamin üretip satmaya başlar.",
+        director: "Vince Gilligan",
         cast: ["Bryan Cranston", "Aaron Paul", "Anna Gunn"],
         platform: "Netflix"
     },
@@ -318,6 +374,8 @@ export const series = [
         rating: 4.5,
         poster: "https://image.tmdb.org/t/p/original/49WJfeN0moxb9IPfGn8AIqMGskD.jpg",
         description: "When a young boy disappears, his mother, a police chief and his friends must confront terrifying supernatural forces.",
+        descriptionTr: "Genç bir çocuk kaybolduğunda, annesi, bir polis şefi ve arkadaşları korkunç doğaüstü güçlerle yüzleşmek zorundadır.",
+        director: "The Duffer Brothers",
         cast: ["Millie Bobby Brown", "Finn Wolfhard", "Winona Ryder"],
         platform: "Netflix"
     },
@@ -329,6 +387,8 @@ export const series = [
         rating: 4.4,
         poster: "https://image.tmdb.org/t/p/original/1M876KPjulVwppEpldhdc8V4o68.jpg",
         description: "Follows the political rivalries and romance of Queen Elizabeth II's reign and the events that shaped the second half of the 20th century.",
+        descriptionTr: "Kraliçe II. Elizabeth'in saltanatının siyasi rekabetlerini ve romantizmini ve 20. yüzyılın ikinci yarısını şekillendiren olayları takip eder.",
+        director: "Peter Morgan",
         cast: ["Claire Foy", "Olivia Colman", "Imelda Staunton"],
         platform: "Netflix"
     },
@@ -340,6 +400,8 @@ export const series = [
         rating: 4.7,
         poster: "https://image.tmdb.org/t/p/original/sWgBv7LV2PRoQgkxwlibdGXKz1S.jpg",
         description: "The travels of a lone bounty hunter in the outer reaches of the galaxy, far from the authority of the New Republic.",
+        descriptionTr: "Galaksinin dış bölgelerinde, Yeni Cumhuriyet'in otoritesinden uzakta, yalnız bir ödül avcısının seyahatleri.",
+        director: "Jon Favreau",
         cast: ["Pedro Pascal", "Katee Sackhoff", "Giancarlo Esposito"],
         platform: "Disney+"
     },
@@ -351,6 +413,8 @@ export const series = [
         rating: 4.8,
         poster: "https://image.tmdb.org/t/p/original/7WTsnHkbA0FaG6R9twfFde0I9hl.jpg",
         description: "A modern update finds the famous sleuth and his doctor partner solving crime in 21st century London.",
+        descriptionTr: "Modern bir güncelleme, ünlü dedektif ve doktor ortağını 21. yüzyıl Londra'sında suç çözerken bulur.",
+        director: "Mark Gatiss, Steven Moffat",
         cast: ["Benedict Cumberbatch", "Martin Freeman", "Una Stubbs"],
         platform: "Netflix"
     },
@@ -362,6 +426,8 @@ export const series = [
         rating: 4.8,
         poster: "https://image.tmdb.org/t/p/original/zU0htwkhNvBQdVSIKB9s6hgVeFK.jpg",
         description: "Orphaned at the tender age of nine, prodigious introvert Beth Harmon discovers and masters the game of chess in 1960s USA.",
+        descriptionTr: "Dokuz yaşında yetim kalan dahi içe dönük Beth Harmon, 1960'ların ABD'sinde satranç oyununu keşfeder ve ustalaşır.",
+        director: "Scott Frank, Allan Scott",
         cast: ["Anya Taylor-Joy", "Chloe Pirrie", "Bill Camp"],
         platform: "Netflix"
     },
@@ -373,6 +439,8 @@ export const series = [
         rating: 4.9,
         poster: "https://image.tmdb.org/t/p/original/fqldf2t8ztc9aiwn3k6mlX3tvRT.jpg",
         description: "Set in utopian Piltover and the oppressed underground of Zaun, the story follows the origins of two iconic League champions.",
+        descriptionTr: "Ütopik Piltover ve baskı altındaki yeraltı şehri Zaun'da geçen hikaye, iki ikonik League şampiyonunun kökenlerini takip ediyor.",
+        director: "Christian Linke, Alex Yee",
         cast: ["Hailee Steinfeld", "Ella Purnell", "Kevin Alejandro"],
         platform: "Netflix"
     },
@@ -384,6 +452,8 @@ export const series = [
         rating: 4.6,
         poster: "https://image.tmdb.org/t/p/original/fbKE87mojpIETWepSbD5Qt741fp.jpg",
         description: "In the late 1970s, two FBI agents expand criminal science by delving into the psychology of murder.",
+        descriptionTr: "1970'lerin sonlarında, iki FBI ajanı cinayet psikolojisine dalarak suç bilimini genişletiyor.",
+        director: "Joe Penhall",
         cast: ["Jonathan Groff", "Holt McCallany", "Anna Torv"],
         platform: "Netflix"
     },
@@ -395,6 +465,8 @@ export const series = [
         rating: 4.7,
         poster: "https://image.tmdb.org/t/p/original/1XS1oqL89opfnbLl8WnZY1O1uJx.jpg",
         description: "Nine noble families fight for control over the lands of Westeros, while an ancient enemy returns after being dormant for millennia.",
+        descriptionTr: "Dokuz soylu aile Westeros topraklarının kontrolü için savaşırken, eski bir düşman bin yıl uyuduktan sonra geri döner.",
+        director: "David Benioff, D. B. Weiss",
         cast: ["Emilia Clarke", "Peter Dinklage", "Kit Harington"],
         platform: "HBO Max"
     },
@@ -406,6 +478,8 @@ export const series = [
         rating: 4.8,
         poster: "https://image.tmdb.org/t/p/original/uKvVjHNqB5VmOrdxqAt2F7J78ED.jpg",
         description: "Twenty years after a fungal outbreak ravages the planet, survivors Joel and Ellie embark on a brutal journey across America.",
+        descriptionTr: "Mantar salgınının gezegeni kasıp kavurmasından yirmi yıl sonra, hayatta kalanlar Joel ve Ellie, Amerika'da acımasız bir yolculuğa çıkarlar.",
+        director: "Craig Mazin, Neil Druckmann",
         cast: ["Pedro Pascal", "Bella Ramsey", "Anna Torv"],
         platform: "HBO Max"
     },
@@ -417,6 +491,8 @@ export const series = [
         rating: 4.7,
         poster: "https://image.tmdb.org/t/p/original/gdIrmf2DdY5mgN6ycVP0XlzKzbE.jpg",
         description: "An animated series that follows the exploits of a super scientist and his not-so-bright grandson.",
+        descriptionTr: "Süper bir bilim adamı ve onun pek de zeki olmayan torununun maceralarını takip eden bir animasyon dizisi.",
+        director: "Justin Roiland, Dan Harmon",
         cast: ["Justin Roiland", "Chris Parnell", "Spencer Grammer"],
         platform: "HBO Max"
     },
@@ -428,6 +504,8 @@ export const series = [
         rating: 4.8,
         poster: "https://image.tmdb.org/t/p/original/fC2HDm5t0kHl7mTm7jxMR31b7by.jpg",
         description: "The trials and tribulations of criminal lawyer Jimmy McGill in the time before he established his strip-mall law office in Albuquerque.",
+        descriptionTr: "Ceza avukatı Jimmy McGill'in Albuquerque'de ofisini kurmadan önceki dönemdeki sıkıntıları ve dertleri.",
+        director: "Vince Gilligan, Peter Gould",
         cast: ["Bob Odenkirk", "Rhea Seehorn", "Jonathan Banks"],
         platform: "Netflix"
     },
@@ -439,6 +517,8 @@ export const series = [
         rating: 4.8,
         poster: "https://image.tmdb.org/t/p/original/56v2KjBlU4XaOv9rVYEQypROD7P.jpg",
         description: "A family saga with a supernatural twist, set in a German town where the disappearance of two young children exposes relationships.",
+        descriptionTr: "İki küçük çocuğun kaybolmasının ilişkileri açığa çıkardığı bir Alman kasabasında geçen, doğaüstü bir bükülmeye sahip bir aile destanı.",
+        director: "Baran bo Odar, Jantje Friese",
         cast: ["Louis Hofmann", "Karoline Eichhorn", "Lisa Vicari"],
         platform: "Netflix"
     },
@@ -450,6 +530,8 @@ export const series = [
         rating: 4.9,
         poster: "https://image.tmdb.org/t/p/original/hlLXt2tOPT6RRnjiUmoxyG1LTFi.jpg",
         description: "In April 1986, an explosion at the Chernobyl nuclear power plant becomes one of the world's worst man-made catastrophes.",
+        descriptionTr: "Nisan 1986'da Çernobil nükleer santralindeki bir patlama, dünyanın en kötü insan yapımı felaketlerinden biri haline gelir.",
+        director: "Craig Mazin",
         cast: ["Jared Harris", "Stellan Skarsgård", "Emily Watson"],
         platform: "HBO Max"
     },
@@ -461,6 +543,8 @@ export const series = [
         rating: 4.6,
         poster: "https://image.tmdb.org/t/p/original/2zmTngn1tYC1AvfnrFLhxeD82hz.jpg",
         description: "A group of vigilantes set out to take down corrupt superheroes who abuse their superpowers.",
+        descriptionTr: "Bir grup kanunsuz, süper güçlerini kötüye kullanan yozlaşmış süper kahramanları indirmek için yola çıkar.",
+        director: "Eric Kripke",
         cast: ["Karl Urban", "Jack Quaid", "Antony Starr"],
         platform: "Prime Video"
     },
@@ -472,6 +556,8 @@ export const series = [
         rating: 4.9,
         poster: "https://image.tmdb.org/t/p/original/9RQhVb3r3mCMqYVhLoCu4EvuipP.jpg",
         description: "In a war-torn world of elemental magic, a young boy reawakens to undertake a dangerous mystic quest to fulfill his destiny as the Avatar.",
+        descriptionTr: "Element büyüsünün olduğu savaşla parçalanmış bir dünyada, genç bir çocuk Avatar olarak kaderini gerçekleştirmek için tehlikeli bir mistik görevi üstlenmek üzere yeniden uyanır.",
+        director: "Michael Dante DiMartino, Bryan Konietzko",
         cast: ["Zach Tyler", "Mae Whitman", "Jack De Sena"],
         platform: "Netflix"
     }

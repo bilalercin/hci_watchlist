@@ -8,14 +8,56 @@ export const state = {
         genre: 'All',
         type: 'movies' // 'movies' or 'series'
     },
-    userProfile: {
+    userProfile: JSON.parse(localStorage.getItem('userProfile')) || {
         firstName: 'User',
         lastName: '',
-        photo: 'https://ui-avatars.com/api/?name=User&background=random'
+        photo: 'https://ui-avatars.com/api/?name=User&background=random',
+        favoriteMovie: null,
+        favoriteSeries: null
     },
     customLists: [], // User created lists
-    isEditingProfile: false
+    isEditingProfile: false,
+    language: localStorage.getItem('language') || 'en',
+    theme: localStorage.getItem('theme') || 'dark',
+    blueLight: localStorage.getItem('blueLight') === 'true'
 };
+
+export function setLanguage(lang) {
+    state.language = lang;
+    localStorage.setItem('language', lang);
+    // Reload page to apply changes easily
+    window.location.reload();
+}
+
+export function setTheme(theme) {
+    state.theme = theme;
+    localStorage.setItem('theme', theme);
+    document.body.className = theme === 'light' ? 'light-mode' : '';
+
+    // Update toggle button icon
+    const toggleBtn = document.getElementById('theme-toggle');
+    if (toggleBtn) {
+        toggleBtn.textContent = theme === 'light' ? '🌙' : '☀️';
+    }
+}
+
+export function setBlueLight(enabled) {
+    state.blueLight = enabled;
+    localStorage.setItem('blueLight', enabled);
+
+    if (enabled) {
+        document.body.classList.add('blue-light-filter');
+    } else {
+        document.body.classList.remove('blue-light-filter');
+    }
+
+    // Update toggle button
+    const toggleBtn = document.getElementById('blue-light-toggle');
+    if (toggleBtn) {
+        toggleBtn.textContent = enabled ? '🔵' : '💡';
+        toggleBtn.style.background = enabled ? 'rgba(255, 200, 100, 0.3)' : '';
+    }
+}
 
 // State update functions
 export function createList(name, items) {
@@ -75,7 +117,17 @@ export function addOrUpdateRating(item, rating, comment) {
 }
 
 export function updateUserProfile(firstName, lastName, photo) {
-    state.userProfile = { firstName, lastName, photo };
+    state.userProfile = { ...state.userProfile, firstName, lastName, photo };
+    localStorage.setItem('userProfile', JSON.stringify(state.userProfile));
+}
+
+export function updateFavoriteItem(type, item) {
+    if (type === 'movie') {
+        state.userProfile.favoriteMovie = item;
+    } else if (type === 'series') {
+        state.userProfile.favoriteSeries = item;
+    }
+    localStorage.setItem('userProfile', JSON.stringify(state.userProfile));
 }
 
 export function setCurrentPage(page) {

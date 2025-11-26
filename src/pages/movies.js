@@ -3,6 +3,8 @@ import { state } from '../utils/state.js';
 import { movies } from '../data/movies.js';
 import { renderGrid } from './shared.js';
 
+import { t } from '../utils/translations.js';
+
 function sortData(data, sortBy) {
     const sorted = [...data];
     switch (sortBy) {
@@ -10,6 +12,8 @@ function sortData(data, sortBy) {
             return sorted.sort((a, b) => a.title.localeCompare(b.title));
         case 'rating':
             return sorted.sort((a, b) => b.rating - a.rating);
+        case 'rating_asc':
+            return sorted.sort((a, b) => a.rating - b.rating);
         case 'year':
             return sorted.sort((a, b) => b.year - a.year);
         default:
@@ -21,18 +25,19 @@ export function renderMoviesPage(renderPageCallback) {
     const mainContent = document.getElementById('main-content');
     mainContent.innerHTML = '';
 
-    const title = state.filter.genre === 'All' ? 'All Movies' : `${state.filter.genre} Movies`;
+    const title = state.filter.genre === 'All' ? t('moviesTitle') : `${state.filter.genre} ${t('moviesTitle')}`;
 
     const header = document.createElement('div');
     header.className = 'section-header';
     header.innerHTML = `
         <h2 class="section-title">${title}</h2>
         <div style="display: flex; align-items: center; gap: 12px;">
-            <label style="color: var(--text-secondary); font-size: 0.9rem;">Sort by:</label>
+            <label style="color: var(--text-secondary); font-size: 0.9rem;">${t('sortBy')}:</label>
             <select id="sort-select" class="sort-select">
-                <option value="rating">Rating</option>
-                <option value="name">Name</option>
-                <option value="year">Year</option>
+                <option value="rating">${t('ratingHighLow')}</option>
+                <option value="rating_asc">${t('ratingLowHigh')}</option>
+                <option value="name">${t('name')}</option>
+                <option value="year">${t('latest')}</option>
             </select>
         </div>
     `;

@@ -1,0 +1,18 @@
+<svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background circle -->
+  <circle cx="20" cy="20" r="18" fill="#00e054" opacity="0.1"/>
+  
+  <!-- Play button with flow -->
+  <g>
+    <!-- Play triangle -->
+    <path d="M15 12 L15 28 L28 20 Z" fill="#00e054"/>
+    
+    <!-- Flow lines -->
+    <path d="M30 15 Q35 15 35 20" stroke="#00e054" stroke-width="2" stroke-linecap="round" fill="none"/>
+    <path d="M30 20 Q37 20 37 25" stroke="#00e054" stroke-width="2" stroke-linecap="round" fill="none" opacity="0.7"/>
+    <path d="M30 25 Q35 25 35 30" stroke="#00e054" stroke-width="2" stroke-linecap="round" fill="none" opacity="0.5"/>
+  </g>
+  
+  <!-- Outer glow effect -->
+  <circle cx="20" cy="20" r="19" stroke="#00e054" stroke-width="0.5" fill="none" opacity="0.3"/>
+</svg>

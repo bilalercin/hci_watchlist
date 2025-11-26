@@ -9,7 +9,7 @@ class LoadingManager {
 
     show(message = 'Loading...') {
         if (this.loadingElement) return;
-        
+
         this.loadingElement = document.createElement('div');
         this.loadingElement.className = 'loading-overlay';
         this.loadingElement.innerHTML = `
@@ -43,7 +43,7 @@ class ActionHistory {
             ...action,
             timestamp: Date.now()
         });
-        
+
         if (this.history.length > this.maxHistory) {
             this.history.shift();
         }
@@ -81,7 +81,7 @@ export function showSuccessFeedback(message, undoCallback = null) {
             showToast('Action undone', 'info');
         }
     } : null;
-    
+
     showToast(`✓ ${message}`, 'success', action);
 }
 
@@ -109,9 +109,9 @@ export function showConfirmDialog(title, message, onConfirm, onCancel = null) {
                 </div>
             </div>
         `;
-        
+
         document.body.appendChild(dialog);
-        
+
         const handleAction = (confirmed) => {
             dialog.remove();
             if (confirmed) {
@@ -122,10 +122,10 @@ export function showConfirmDialog(title, message, onConfirm, onCancel = null) {
                 resolve(false);
             }
         };
-        
+
         dialog.querySelector('[data-action="confirm"]').addEventListener('click', () => handleAction(true));
         dialog.querySelector('[data-action="cancel"]').addEventListener('click', () => handleAction(false));
-        
+
         // ESC key support - Rule #2: Shortcuts
         const escHandler = (e) => {
             if (e.key === 'Escape') {
@@ -134,7 +134,7 @@ export function showConfirmDialog(title, message, onConfirm, onCancel = null) {
             }
         };
         document.addEventListener('keydown', escHandler);
-        
+
         // Click outside to cancel
         dialog.addEventListener('click', (e) => {
             if (e.target === dialog) {
@@ -149,7 +149,7 @@ export function addButtonFeedback(button, action) {
     const originalContent = button.innerHTML;
     button.disabled = true;
     button.innerHTML = '<span class="btn-loading"></span>';
-    
+
     return async () => {
         try {
             await action();

@@ -4,6 +4,8 @@ import { movies, series } from '../data/movies.js';
 import { renderGrid } from './shared.js';
 import { showToast } from '../components/toast.js';
 
+import { t } from '../utils/translations.js';
+
 export function renderListsPage(renderPageCallback) {
     const mainContent = document.getElementById('main-content');
     mainContent.innerHTML = '';
@@ -12,8 +14,8 @@ export function renderListsPage(renderPageCallback) {
     const header = document.createElement('div');
     header.className = 'section-header';
     header.innerHTML = `
-        <h2 class="section-title">Your Lists</h2>
-        <button id="create-list-btn" class="btn-primary">+ Create New List</button>
+        <h2 class="section-title">${t('listsTitle')}</h2>
+        <button id="create-list-btn" class="btn-primary">+ ${t('createList')}</button>
     `;
     mainContent.appendChild(header);
 
@@ -26,13 +28,13 @@ export function renderListsPage(renderPageCallback) {
             const listEl = document.createElement('div');
             listEl.style.marginBottom = '24px';
             listEl.innerHTML = `
-                <h3 style="font-size: 1.2rem; margin-bottom: 16px; color: var(--accent-color);">${list.name} <span style="color: var(--text-secondary); font-size: 0.9rem;">(${list.items.length} items)</span></h3>
+                <h3 style="font-size: 1.2rem; margin-bottom: 16px; color: var(--accent-color);">${list.name} <span style="color: var(--text-secondary); font-size: 0.9rem;">${t('itemsCount', { count: list.items.length })}</span></h3>
             `;
             listEl.appendChild(renderGrid(list.items, false, renderPageCallback));
             customListsContainer.appendChild(listEl);
         });
     } else {
-        customListsContainer.innerHTML = `<p style="color: var(--text-muted); font-style: italic;">You haven't created any custom lists yet.</p>`;
+        customListsContainer.innerHTML = `<p style="color: var(--text-muted); font-style: italic;">${t('noLists')}</p>`;
     }
     mainContent.appendChild(customListsContainer);
 
@@ -44,13 +46,14 @@ export function renderListsPage(renderPageCallback) {
     watchlistHeader.style.paddingTop = '24px';
 
     watchlistHeader.innerHTML = `
-        <h2 class="section-title">Watchlist</h2>
+        <h2 class="section-title">${t('watchlist')}</h2>
         <div style="display: flex; align-items: center; gap: 12px;">
-            <label style="color: var(--text-secondary); font-size: 0.9rem;">Sort by:</label>
+            <label style="color: var(--text-secondary); font-size: 0.9rem;">${t('sortBy')}:</label>
             <select id="watchlist-sort-select" class="sort-select">
-                <option value="rating">Rating</option>
-                <option value="name">Name</option>
-                <option value="year">Year</option>
+                <option value="rating">${t('ratingHighLow')}</option>
+                <option value="rating_asc">${t('ratingLowHigh')}</option>
+                <option value="name">${t('name')}</option>
+                <option value="year">${t('latest')}</option>
             </select>
         </div>
     `;
@@ -60,7 +63,7 @@ export function renderListsPage(renderPageCallback) {
     watchlistContainer.id = 'watchlist-grid-container';
 
     if (state.watchlist.length === 0) {
-        watchlistContainer.innerHTML = `<p>Your watchlist is empty.</p>`;
+        watchlistContainer.innerHTML = `<p>${t('noLists')}</p>`; // Using noLists for empty watchlist too for now or create a new key
     } else {
         // Initial sort by rating
         const sortedWatchlist = [...state.watchlist].sort((a, b) => b.rating - a.rating);
@@ -79,6 +82,8 @@ export function renderListsPage(renderPageCallback) {
                 sortedData.sort((a, b) => a.title.localeCompare(b.title));
             } else if (sortBy === 'rating') {
                 sortedData.sort((a, b) => b.rating - a.rating);
+            } else if (sortBy === 'rating_asc') {
+                sortedData.sort((a, b) => a.rating - b.rating);
             } else if (sortBy === 'year') {
                 sortedData.sort((a, b) => b.year - a.year);
             }
@@ -106,34 +111,34 @@ function showCreateListModal(renderPageCallback) {
 
     modal.innerHTML = `
         <div class="list-modal-header">
-            <h3>Create New List</h3>
+            <h3>${t('createListModalTitle')}</h3>
             <button class="detail-modal-close" style="position: static;">&times;</button>
         </div>
         
         <div class="list-modal-body">
             <div class="form-group" style="margin-bottom: 12px;">
-                <label class="form-label" style="font-size: 0.85rem;">List Name</label>
+                <label class="form-label" style="font-size: 0.85rem;">${t('listNamePlaceholder')}</label>
                 <input type="text" id="list-name-input" class="form-input" placeholder="e.g., Weekend Vibes" style="padding: 8px;">
             </div>
 
             <div class="form-group" style="margin-bottom: 8px;">
-                <label class="form-label" style="font-size: 0.85rem;">Add Movies & Series</label>
-                <input type="text" id="item-search" class="form-input" placeholder="Search..." style="padding: 8px;">
+                <label class="form-label" style="font-size: 0.85rem;">${t('addItemsPlaceholder')}</label>
+                <input type="text" id="item-search" class="form-input" placeholder="${t('searchPlaceholder')}" style="padding: 8px;">
             </div>
 
             <div id="selection-list" class="selection-list-container">
                 <!-- Items will be rendered here -->
             </div>
 
-            <div style="font-size: 0.8rem; color: var(--text-secondary); margin-bottom: 4px;">Selected Items:</div>
+            <div style="font-size: 0.8rem; color: var(--text-secondary); margin-bottom: 4px;">${t('selectedItems')}</div>
             <div id="selected-preview" class="selected-preview-container">
-                <span style="color: var(--text-muted); font-size: 0.8rem; align-self: center;">No items selected</span>
+                <span style="color: var(--text-muted); font-size: 0.8rem; align-self: center;">${t('noItemsSelected')}</span>
             </div>
         </div>
 
         <div class="list-modal-footer">
-            <button class="btn-cancel" id="cancel-list-btn">Cancel</button>
-            <button class="btn-primary" id="save-list-btn">Save List</button>
+            <button class="btn-cancel" id="cancel-list-btn">${t('cancelBtn')}</button>
+            <button class="btn-primary" id="save-list-btn">${t('createBtn')}</button>
         </div>
     `;
 
@@ -187,7 +192,7 @@ function showCreateListModal(renderPageCallback) {
     const updatePreview = () => {
         const preview = document.getElementById('selected-preview');
         if (selectedItems.length === 0) {
-            preview.innerHTML = `<span style="color: var(--text-muted); font-size: 0.8rem; align-self: center;">No items selected</span>`;
+            preview.innerHTML = `<span style="color: var(--text-muted); font-size: 0.8rem; align-self: center;">${t('noItemsSelected')}</span>`;
             return;
         }
 
@@ -233,16 +238,16 @@ function showCreateListModal(renderPageCallback) {
     document.getElementById('save-list-btn').onclick = () => {
         const name = document.getElementById('list-name-input').value;
         if (!name) {
-            showToast('Please enter a list name', 'warning');
+            showToast(t('enterListName'), 'warning');
             return;
         }
         if (selectedItems.length === 0) {
-            showToast('Please select at least one item', 'warning');
+            showToast(t('selectOneItem'), 'warning');
             return;
         }
 
         createList(name, selectedItems);
-        showToast(`List "${name}" created!`, 'success');
+        showToast(t('listCreated', { name }), 'success');
         closeModal();
         renderListsPage(renderPageCallback);
     };

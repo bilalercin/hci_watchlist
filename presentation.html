@@ -1,0 +1,842 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WatchFlow - HCI Presentation</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: linear-gradient(135deg, #0a0e12 0%, #1a1f28 100%);
+            color: #ffffff;
+            overflow: hidden;
+        }
+
+        .presentation-container {
+            width: 100vw;
+            height: 100vh;
+            position: relative;
+        }
+
+        .slide {
+            width: 100%;
+            height: 100%;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            padding: 80px;
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .slide.active {
+            display: flex;
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .slide-content {
+            max-width: 1200px;
+            width: 100%;
+        }
+
+        h1 {
+            font-size: 4rem;
+            font-weight: 700;
+            margin-bottom: 24px;
+            background: linear-gradient(135deg, #00e054 0%, #00b042 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        h2 {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 32px;
+            color: #00e054;
+        }
+
+        h3 {
+            font-size: 2rem;
+            margin-bottom: 24px;
+            color: #99aabb;
+        }
+
+        p {
+            font-size: 1.3rem;
+            line-height: 1.8;
+            color: #99aabb;
+            margin-bottom: 16px;
+        }
+
+        .subtitle {
+            font-size: 1.8rem;
+            color: #667788;
+            margin-bottom: 48px;
+        }
+
+        .highlight {
+            color: #00e054;
+            font-weight: 600;
+        }
+
+        ul {
+            list-style: none;
+            font-size: 1.2rem;
+            line-height: 2;
+        }
+
+        ul li::before {
+            content: "→ ";
+            color: #00e054;
+            font-weight: bold;
+            margin-right: 8px;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 32px;
+            margin-top: 48px;
+        }
+
+        .feature-box {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 32px;
+            border-radius: 16px;
+            border: 2px solid rgba(0, 224, 84, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        .feature-box:hover {
+            border-color: #00e054;
+            transform: translateY(-8px);
+            background: rgba(0, 224, 84, 0.1);
+        }
+
+        .feature-icon {
+            font-size: 3rem;
+            margin-bottom: 16px;
+        }
+
+        .feature-title {
+            font-size: 1.5rem;
+            color: #ffffff;
+            margin-bottom: 12px;
+        }
+
+        .feature-desc {
+            font-size: 1.1rem;
+            color: #99aabb;
+        }
+
+        .code-block {
+            background: #1e2328;
+            border: 1px solid #2c3440;
+            border-radius: 12px;
+            padding: 24px;
+            margin: 24px 0;
+            font-family: 'Monaco', 'Courier New', monospace;
+            font-size: 1rem;
+            overflow-x: auto;
+        }
+
+        .code-block code {
+            color: #00e054;
+        }
+
+        .rules-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 24px;
+            margin-top: 48px;
+        }
+
+        .rule-card {
+            background: rgba(0, 224, 84, 0.1);
+            border: 2px solid #00e054;
+            padding: 24px;
+            border-radius: 12px;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .rule-card:hover {
+            transform: scale(1.05);
+            background: rgba(0, 224, 84, 0.2);
+        }
+
+        .rule-number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #00e054;
+            margin-bottom: 12px;
+        }
+
+        .rule-name {
+            font-size: 1.1rem;
+            color: #ffffff;
+        }
+
+        .controls {
+            position: fixed;
+            bottom: 40px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 24px;
+            align-items: center;
+            background: rgba(30, 35, 40, 0.9);
+            padding: 16px 32px;
+            border-radius: 50px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(0, 224, 84, 0.3);
+        }
+
+        .nav-btn {
+            background: #00e054;
+            color: black;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .nav-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 20px rgba(0, 224, 84, 0.5);
+        }
+
+        .nav-btn:disabled {
+            opacity: 0.3;
+            cursor: not-allowed;
+        }
+
+        .slide-number {
+            color: #99aabb;
+            font-size: 1.1rem;
+            min-width: 100px;
+            text-align: center;
+        }
+
+        .progress-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 4px;
+            background: #00e054;
+            transition: width 0.3s ease;
+            box-shadow: 0 0 10px rgba(0, 224, 84, 0.5);
+        }
+
+        .center-text {
+            text-align: center;
+        }
+
+        .two-column {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 48px;
+            align-items: start;
+        }
+
+        .badge {
+            display: inline-block;
+            background: rgba(0, 224, 84, 0.2);
+            color: #00e054;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            margin-right: 8px;
+            margin-bottom: 8px;
+        }
+
+        .logo {
+            width: 100px;
+            height: 100px;
+            margin: 0 auto 32px;
+            animation: float 3s ease-in-out infinite;
+        }
+
+        @keyframes float {
+
+            0%,
+            100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-20px);
+            }
+        }
+
+        .stat-box {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 24px;
+            border-radius: 12px;
+            text-align: center;
+            border: 2px solid rgba(0, 224, 84, 0.2);
+        }
+
+        .stat-number {
+            font-size: 3rem;
+            color: #00e054;
+            font-weight: 700;
+        }
+
+        .stat-label {
+            font-size: 1.1rem;
+            color: #99aabb;
+        }
+
+        .checkmark {
+            color: #00e054;
+            font-weight: bold;
+            margin-right: 8px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="progress-bar" id="progress"></div>
+
+    <div class="presentation-container">
+        <!-- Slide 1: Title -->
+        <div class="slide active">
+            <div class="slide-content center-text">
+                <img src="/logo.svg" alt="WatchFlow Logo" class="logo">
+                <h1>WatchFlow</h1>
+                <p class="subtitle">A Modern Movie & Series Tracking Application</p>
+                <h3 style="color: #00e054;">Implementing Shneiderman's 8 Golden Rules</h3>
+                <p style="margin-top: 48px; font-size: 1.2rem;">Bilal Erçin • HCI Course • November 2025</p>
+            </div>
+        </div>
+
+        <!-- Slide 2: What is WatchFlow? -->
+        <div class="slide">
+            <div class="slide-content">
+                <h2>What is WatchFlow?</h2>
+                <p style="font-size: 1.4rem; line-height: 1.8;">
+                    <span class="highlight">WatchFlow</span> is a modern web application designed to help users
+                    discover, organize, and track movies and TV series in one centralized platform. Built with user
+                    experience as the top priority, WatchFlow implements <span class="highlight">Shneiderman's 8 Golden
+                        Rules</span> to create an intuitive, efficient, and enjoyable experience.
+                </p>
+                <div class="features-grid">
+                    <div class="feature-box">
+                        <div class="feature-icon">🎬</div>
+                        <div class="feature-title">Content Discovery</div>
+                        <div class="feature-desc">Browse and filter movies & series</div>
+                    </div>
+                    <div class="feature-box">
+                        <div class="feature-icon">📝</div>
+                        <div class="feature-title">Watchlist Management</div>
+                        <div class="feature-desc">Organize what to watch next</div>
+                    </div>
+                    <div class="feature-box">
+                        <div class="feature-icon">⭐</div>
+                        <div class="feature-title">Rating System</div>
+                        <div class="feature-desc">Rate and review content</div>
+                    </div>
+                    <div class="feature-box">
+                        <div class="feature-icon">📊</div>
+                        <div class="feature-title">Statistics Tracking</div>
+                        <div class="feature-desc">View progress & achievements</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 3: 8 Golden Rules Overview -->
+        <div class="slide">
+            <div class="slide-content">
+                <h2 class="center-text">Shneiderman's 8 Golden Rules</h2>
+                <p class="center-text" style="margin-bottom: 48px;">Principles for effective interface design</p>
+                <div class="rules-grid">
+                    <div class="rule-card">
+                        <div class="rule-number">1</div>
+                        <div class="rule-name">Consistency</div>
+                    </div>
+                    <div class="rule-card">
+                        <div class="rule-number">2</div>
+                        <div class="rule-name">Shortcuts</div>
+                    </div>
+                    <div class="rule-card">
+                        <div class="rule-number">3</div>
+                        <div class="rule-name">Feedback</div>
+                    </div>
+                    <div class="rule-card">
+                        <div class="rule-number">4</div>
+                        <div class="rule-name">Closure</div>
+                    </div>
+                    <div class="rule-card">
+                        <div class="rule-number">5</div>
+                        <div class="rule-name">Error Handling</div>
+                    </div>
+                    <div class="rule-card">
+                        <div class="rule-number">6</div>
+                        <div class="rule-name">Reversal</div>
+                    </div>
+                    <div class="rule-card">
+                        <div class="rule-number">7</div>
+                        <div class="rule-name">User Control</div>
+                    </div>
+                    <div class="rule-card">
+                        <div class="rule-number">8</div>
+                        <div class="rule-name">Memory Load</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 4: Rule 1 - Consistency -->
+        <div class="slide">
+            <div class="slide-content">
+                <h2>Rule #1: Consistency</h2>
+                <div class="two-column">
+                    <div>
+                        <h3>Implementation</h3>
+                        <ul>
+                            <li>Unified color scheme (CSS variables)</li>
+                            <li>Standard button styles everywhere</li>
+                            <li>Consistent card layouts</li>
+                            <li>Predictable navigation patterns</li>
+                            <li>Uniform animations</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <div class="code-block">
+                            <code>:root {
+  --accent-color: #00e054;
+  --bg-primary: #14181c;
+  --text-primary: #ffffff;
+}
+
+.btn-primary {
+  background: var(--accent-color);
+  /* Used consistently */
+}</code>
+                        </div>
+                        <p><span class="checkmark">✓</span> All buttons use same green color</p>
+                        <p><span class="checkmark">✓</span> Navigation behaves identically</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 5: Rule 2 - Shortcuts -->
+        <div class="slide">
+            <div class="slide-content">
+                <h2>Rule #2: Enable Shortcuts</h2>
+                <div class="two-column">
+                    <div>
+                        <h3>Keyboard Shortcuts</h3>
+                        <div class="feature-box" style="margin-bottom: 16px;">
+                            <p style="font-size: 1.4rem;"><kbd
+                                    style="background: #00e054; color: black; padding: 4px 12px; border-radius: 4px;">?</kbd>
+                                Show shortcuts help</p>
+                        </div>
+                        <div class="feature-box" style="margin-bottom: 16px;">
+                            <p style="font-size: 1.4rem;"><kbd
+                                    style="background: #00e054; color: black; padding: 4px 12px; border-radius: 4px;">/</kbd>
+                                Focus search</p>
+                        </div>
+                        <div class="feature-box" style="margin-bottom: 16px;">
+                            <p style="font-size: 1.4rem;"><kbd
+                                    style="background: #00e054; color: black; padding: 4px 12px; border-radius: 4px;">ESC</kbd>
+                                Close modals</p>
+                        </div>
+                        <div class="feature-box">
+                            <p style="font-size: 1.4rem;"><kbd
+                                    style="background: #00e054; color: black; padding: 4px 12px; border-radius: 4px;">1-5</kbd>
+                                Page navigation</p>
+                        </div>
+                    </div>
+                    <div>
+                        <h3>Benefits</h3>
+                        <ul>
+                            <li>⚡ Power users navigate faster</li>
+                            <li>🎯 Less mouse usage needed</li>
+                            <li>📚 Help overlay teaches users</li>
+                            <li>🚀 Increased efficiency</li>
+                        </ul>
+                        <div class="code-block" style="margin-top: 24px;">
+                            <code>shortcutManager.register(
+  '/', 
+  'Focus search', 
+  () => searchInput.focus()
+);</code>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 6: Rule 3 - Feedback -->
+        <div class="slide">
+            <div class="slide-content">
+                <h2>Rule #3: Informative Feedback</h2>
+                <div class="two-column">
+                    <div>
+                        <h3>Toast Notifications</h3>
+                        <div class="feature-box" style="background: rgba(0, 224, 84, 0.2); margin-bottom: 16px;">
+                            <p>✅ "Added to watchlist"</p>
+                        </div>
+                        <div class="feature-box" style="background: rgba(255, 64, 64, 0.2); margin-bottom: 16px;">
+                            <p>❌ "Please select a rating"</p>
+                        </div>
+                        <div class="feature-box" style="background: rgba(74, 158, 255, 0.2);">
+                            <p>🔍 "Found 12 results"</p>
+                        </div>
+                    </div>
+                    <div>
+                        <h3>Additional Feedback</h3>
+                        <ul>
+                            <li>Loading spinners for async operations</li>
+                            <li>Hover effects on interactive elements</li>
+                            <li>Click animations for confirmation</li>
+                            <li>Search result counts</li>
+                            <li>Form validation messages</li>
+                        </ul>
+                        <div class="code-block" style="margin-top: 24px;">
+                            <code>showSuccessFeedback(
+  'Added to watchlist',
+  undoCallback
+);</code>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 7: Rule 4 - Closure -->
+        <div class="slide">
+            <div class="slide-content">
+                <h2>Rule #4: Design Dialogs to Yield Closure</h2>
+                <h3 class="center-text" style="margin-bottom: 48px;">Clear completion messages for every action</h3>
+                <div class="features-grid">
+                    <div class="feature-box" style="background: rgba(0, 224, 84, 0.15);">
+                        <div class="feature-icon">✓</div>
+                        <div class="feature-title">Profile Updated</div>
+                        <div class="feature-desc">"Profile updated successfully"</div>
+                    </div>
+                    <div class="feature-box" style="background: rgba(0, 224, 84, 0.15);">
+                        <div class="feature-icon">⭐</div>
+                        <div class="feature-title">Rating Saved</div>
+                        <div class="feature-desc">"Saved rating for [Movie]"</div>
+                    </div>
+                    <div class="feature-box" style="background: rgba(0, 224, 84, 0.15);">
+                        <div class="feature-icon">📝</div>
+                        <div class="feature-title">Watchlist Updated</div>
+                        <div class="feature-desc">"Added Inception to watchlist"</div>
+                    </div>
+                    <div class="feature-box" style="background: rgba(0, 224, 84, 0.15);">
+                        <div class="feature-icon">🎯</div>
+                        <div class="feature-title">User Confidence</div>
+                        <div class="feature-desc">No ambiguity about status</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 8: Rule 5 - Error Handling -->
+        <div class="slide">
+            <div class="slide-content">
+                <h2>Rule #5: Simple Error Handling</h2>
+                <div class="two-column">
+                    <div>
+                        <h3 style="color: #ff4040;">❌ Bad Examples</h3>
+                        <div class="feature-box" style="border-color: #ff4040; background: rgba(255, 64, 64, 0.1);">
+                            <p style="color: #ff4040;">"Error 404"</p>
+                        </div>
+                        <div class="feature-box" style="border-color: #ff4040; background: rgba(255, 64, 64, 0.1);">
+                            <p style="color: #ff4040;">"Invalid input"</p>
+                        </div>
+                        <div class="feature-box" style="border-color: #ff4040; background: rgba(255, 64, 64, 0.1);">
+                            <p style="color: #ff4040;">"Request failed"</p>
+                        </div>
+                    </div>
+                    <div>
+                        <h3 style="color: #00e054;">✅ Good Examples</h3>
+                        <div class="feature-box" style="border-color: #00e054;">
+                            <p style="color: #00e054;">"No results found. Try different keywords"</p>
+                        </div>
+                        <div class="feature-box" style="border-color: #00e054;">
+                            <p style="color: #00e054;">"First Name is required!"</p>
+                        </div>
+                        <div class="feature-box" style="border-color: #00e054;">
+                            <p style="color: #00e054;">"Please select a rating before saving"</p>
+                        </div>
+                    </div>
+                </div>
+                <p class="center-text" style="margin-top: 48px; font-size: 1.3rem;">
+                    <span class="highlight">No error codes!</span> Plain language with helpful suggestions
+                </p>
+            </div>
+        </div>
+
+        <!-- Slide 9: Rule 6 - Reversal -->
+        <div class="slide">
+            <div class="slide-content">
+                <h2>Rule #6: Easy Reversal of Actions</h2>
+                <h3>User Scenario Example</h3>
+                <div style="display: grid; grid-template-columns: repeat(5, 1fr); gap: 16px; margin-top: 48px;">
+                    <div class="feature-box" style="text-align: center;">
+                        <div class="feature-icon">1️⃣</div>
+                        <p>Remove from watchlist</p>
+                    </div>
+                    <div
+                        style="display: flex; align-items: center; justify-content: center; font-size: 2rem; color: #00e054;">
+                        →</div>
+                    <div class="feature-box" style="text-align: center;">
+                        <div class="feature-icon">2️⃣</div>
+                        <p>Toast with "Undo" button</p>
+                    </div>
+                    <div
+                        style="display: flex; align-items: center; justify-content: center; font-size: 2rem; color: #00e054;">
+                        →</div>
+                    <div class="feature-box" style="text-align: center;">
+                        <div class="feature-icon">3️⃣</div>
+                        <p>Click Undo → Restored!</p>
+                    </div>
+                </div>
+                <div class="code-block" style="margin-top: 48px;">
+                    <code>removeFromWatchlist(item.id);
+
+showToast('Removed', 'undo', {
+  label: 'Undo',
+  callback: () => {
+    undoRemove();
+    showToast('Restored!', 'success');
+  }
+});</code>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 10: Rule 7 - User Control -->
+        <div class="slide">
+            <div class="slide-content">
+                <h2>Rule #7: User Control</h2>
+                <div class="features-grid">
+                    <div class="feature-box">
+                        <div class="feature-icon">🚪</div>
+                        <div class="feature-title">Easy Exits</div>
+                        <div class="feature-desc">ESC closes modals, Cancel buttons everywhere</div>
+                    </div>
+                    <div class="feature-box">
+                        <div class="feature-icon">🎮</div>
+                        <div class="feature-title">User Initiates</div>
+                        <div class="feature-desc">No forced redirects or automatic actions</div>
+                    </div>
+                    <div class="feature-box">
+                        <div class="feature-icon">🤝</div>
+                        <div class="feature-title">Predictable</div>
+                        <div class="feature-desc">System behaves as expected</div>
+                    </div>
+                    <div class="feature-box">
+                        <div class="feature-icon">✨</div>
+                        <div class="feature-title">Transparent</div>
+                        <div class="feature-desc">User knows what will happen</div>
+                    </div>
+                </div>
+                <p class="center-text" style="margin-top: 48px; font-size: 1.4rem;">
+                    <span class="highlight">Empowerment:</span> User always feels in charge
+                </p>
+            </div>
+        </div>
+
+        <!-- Slide 11: Rule 8 - Memory Load -->
+        <div class="slide">
+            <div class="slide-content">
+                <h2>Rule #8: Reduce Memory Load</h2>
+                <div class="two-column">
+                    <div>
+                        <h3>Visual Cues</h3>
+                        <ul>
+                            <li>Active page highlighted in nav</li>
+                            <li>Icons and colors for recognition</li>
+                            <li>Tooltips with helpful hints</li>
+                            <li>Search query shown in results</li>
+                            <li>Visible filter states</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h3>Context Preservation</h3>
+                        <div class="feature-box">
+                            <p style="font-size: 1.2rem;">"Search Results for 'inception'"</p>
+                            <p style="color: #99aabb; font-size: 0.9rem;">Reminds user what they searched</p>
+                        </div>
+                        <div class="feature-box" style="margin-top: 16px;">
+                            <p style="font-size: 1.2rem;">"Found 12 results"</p>
+                            <p style="color: #99aabb; font-size: 0.9rem;">Clear result count</p>
+                        </div>
+                    </div>
+                </div>
+                <p class="center-text" style="margin-top: 48px; font-size: 1.3rem;">
+                    <span class="highlight">Recognition over Recall</span> - See, don't remember
+                </p>
+            </div>
+        </div>
+
+        <!-- Slide 12: Implementation Summary -->
+        <div class="slide">
+            <div class="slide-content">
+                <h2 class="center-text">Implementation Summary</h2>
+                <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; margin-top: 48px;">
+                    <div class="stat-box">
+                        <div class="stat-number">100%</div>
+                        <div class="stat-label">Consistency</div>
+                    </div>
+                    <div class="stat-box">
+                        <div class="stat-number">100%</div>
+                        <div class="stat-label">Shortcuts</div>
+                    </div>
+                    <div class="stat-box">
+                        <div class="stat-number">95%</div>
+                        <div class="stat-label">Feedback</div>
+                    </div>
+                    <div class="stat-box">
+                        <div class="stat-number">90%</div>
+                        <div class="stat-label">Closure</div>
+                    </div>
+                    <div class="stat-box">
+                        <div class="stat-number">85%</div>
+                        <div class="stat-label">Error Handling</div>
+                    </div>
+                    <div class="stat-box">
+                        <div class="stat-number">80%</div>
+                        <div class="stat-label">Reversal</div>
+                    </div>
+                    <div class="stat-box">
+                        <div class="stat-number">100%</div>
+                        <div class="stat-label">User Control</div>
+                    </div>
+                    <div class="stat-box">
+                        <div class="stat-number">90%</div>
+                        <div class="stat-label">Memory Load</div>
+                    </div>
+                </div>
+                <div class="center-text" style="margin-top: 64px;">
+                    <div class="stat-number" style="font-size: 5rem;">93%</div>
+                    <p style="font-size: 1.5rem; color: #99aabb;">Overall HCI Compliance</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 13: Demo -->
+        <div class="slide">
+            <div class="slide-content center-text">
+                <h2>Live Demo</h2>
+                <div class="features-grid" style="margin-top: 64px;">
+                    <div class="feature-box">
+                        <div class="feature-icon">⌨️</div>
+                        <div class="feature-title">Try Shortcuts</div>
+                        <div class="feature-desc">Press ? to see all keyboard shortcuts</div>
+                    </div>
+                    <div class="feature-box">
+                        <div class="feature-icon">↩️</div>
+                        <div class="feature-title">Test Undo</div>
+                        <div class="feature-desc">Add/remove from watchlist and undo</div>
+                    </div>
+                </div>
+                <div style="margin-top: 64px;">
+                    <h3>🔗 http://localhost:5173</h3>
+                    <p style="margin-top: 24px;">Experience the 8 Golden Rules in action!</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 14: Thank You -->
+        <div class="slide">
+            <div class="slide-content center-text">
+                <h1 style="font-size: 5rem;">Thank You!</h1>
+                <p class="subtitle">Any Questions?</p>
+                <div style="margin-top: 64px;">
+                    <p style="font-size: 1.3rem;">📧 bilalercin@example.com</p>
+                    <p style="font-size: 1.3rem; margin-top: 16px;">💼 github.com/bilalercin</p>
+                    <p style="font-size: 1.3rem; margin-top: 16px;">🔗 github.com/bilalercin/hci_watchlist</p>
+                </div>
+                <p style="margin-top: 64px; font-size: 1.1rem; color: #667788;">
+                    WatchFlow © 2025 • Built with HCI principles in mind
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <div class="controls">
+        <button class="nav-btn" id="prevBtn">← Previous</button>
+        <div class="slide-number" id="slideNumber">1 / 14</div>
+        <button class="nav-btn" id="nextBtn">Next →</button>
+    </div>
+
+    <script>
+        let currentSlide = 0;
+        const slides = document.querySelectorAll('.slide');
+        const totalSlides = slides.length;
+        const progress = document.getElementById('progress');
+        const slideNumber = document.getElementById('slideNumber');
+        const prevBtn = document.getElementById('prevBtn');
+        const nextBtn = document.getElementById('nextBtn');
+
+        function updateSlide() {
+            slides.forEach((slide, index) => {
+                slide.classList.remove('active');
+                if (index === currentSlide) {
+                    slide.classList.add('active');
+                }
+            });
+
+            progress.style.width = `${((currentSlide + 1) / totalSlides) * 100}%`;
+            slideNumber.textContent = `${currentSlide + 1} / ${totalSlides}`;
+
+            prevBtn.disabled = currentSlide === 0;
+            nextBtn.disabled = currentSlide === totalSlides - 1;
+        }
+
+        function nextSlide() {
+            if (currentSlide < totalSlides - 1) {
+                currentSlide++;
+                updateSlide();
+            }
+        }
+
+        function prevSlide() {
+            if (currentSlide > 0) {
+                currentSlide--;
+                updateSlide();
+            }
+        }
+
+        // Event listeners
+        nextBtn.addEventListener('click', nextSlide);
+        prevBtn.addEventListener('click', prevSlide);
+
+        // Keyboard navigation
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowRight' || e.key === ' ') {
+                e.preventDefault();
+                nextSlide();
+            } else if (e.key === 'ArrowLeft') {
+                e.preventDefault();
+                prevSlide();
+            }
+        });
+
+        // Initialize
+        updateSlide();
+    </script>
+</body>
+
+</html>
