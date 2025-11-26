@@ -1,6 +1,8 @@
 // Detail Modal Component
 import { state, addToWatchlist, removeFromWatchlist } from '../utils/state.js';
 import { showToast } from './toast.js';
+import { showSuccessFeedback, showErrorFeedback } from '../utils/feedback.js';
+import { setModalCloseHandler, clearModalCloseHandler } from '../main.js';
 
 export function showDetailModal(item, renderPageCallback, openRatingModalCallback) {
   // Check if item is in watchlist
@@ -56,7 +58,12 @@ export function showDetailModal(item, renderPageCallback, openRatingModalCallbac
   const closeModal = () => {
     modalOverlay.remove();
     document.body.style.overflow = '';
+    clearModalCloseHandler(); // Rule #2: Clear ESC handler
+    document.removeEventListener('keydown', handleEscape);
   };
+
+  // Register modal close handler for global shortcuts - Rule #2
+  setModalCloseHandler(closeModal);
 
   // Close button
   modal.querySelector('.detail-modal-close').addEventListener('click', closeModal);
@@ -72,7 +79,6 @@ export function showDetailModal(item, renderPageCallback, openRatingModalCallbac
   const handleEscape = (e) => {
     if (e.key === 'Escape') {
       closeModal();
-      document.removeEventListener('keydown', handleEscape);
     }
   };
   document.addEventListener('keydown', handleEscape);
