@@ -29,7 +29,6 @@
     - [ ] Final UI Polish (Animations, Transitions) <!-- id: 21 -->
 
 - [ ] Add More Movies and Series <!-- id: 27 -->
-    - [x] Plan new content (movies/series list) <!-- id: 28 -->
-    - [x] Generate images for new content <!-- id: 29 -->
-    - [x] Update data file with new entries <!-- id: 30 -->
-    - [/] Verify changes <!-- id: 31 -->
+    - [x] Verify changes <!-- id: 31 -->
+- [x] Deployment <!-- id: 32 -->
+    - [x] Deploy to Vercel <!-- id: 33 -->

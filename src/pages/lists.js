@@ -1,4 +1,4 @@
-// Lists (Watchlist) Page Module
+// Custom Lists (My Lists) Page Module
 import { state, createList } from '../utils/state.js';
 import { movies, series } from '../data/movies.js';
 import { renderGrid } from './shared.js';
@@ -14,7 +14,7 @@ export function renderListsPage(renderPageCallback) {
     const header = document.createElement('div');
     header.className = 'section-header';
     header.innerHTML = `
-        <h2 class="section-title">${t('listsTitle')}</h2>
+        <h2 class="section-title">${t('myLists')}</h2>
         <button id="create-list-btn" class="btn-primary">+ ${t('createList')}</button>
     `;
     mainContent.appendChild(header);
@@ -37,61 +37,6 @@ export function renderListsPage(renderPageCallback) {
         customListsContainer.innerHTML = `<p style="color: var(--text-muted); font-style: italic;">${t('noLists')}</p>`;
     }
     mainContent.appendChild(customListsContainer);
-
-    // Watchlist Section (Default)
-    const watchlistHeader = document.createElement('div');
-    watchlistHeader.className = 'section-header';
-    watchlistHeader.style.marginBottom = '16px';
-    watchlistHeader.style.borderTop = '1px solid var(--bg-tertiary)';
-    watchlistHeader.style.paddingTop = '24px';
-
-    watchlistHeader.innerHTML = `
-        <h2 class="section-title">${t('watchlist')}</h2>
-        <div style="display: flex; align-items: center; gap: 12px;">
-            <label style="color: var(--text-secondary); font-size: 0.9rem;">${t('sortBy')}:</label>
-            <select id="watchlist-sort-select" class="sort-select">
-                <option value="rating">${t('ratingHighLow')}</option>
-                <option value="rating_asc">${t('ratingLowHigh')}</option>
-                <option value="name">${t('name')}</option>
-                <option value="year">${t('latest')}</option>
-            </select>
-        </div>
-    `;
-    mainContent.appendChild(watchlistHeader);
-
-    const watchlistContainer = document.createElement('div');
-    watchlistContainer.id = 'watchlist-grid-container';
-
-    if (state.watchlist.length === 0) {
-        watchlistContainer.innerHTML = `<p>${t('noLists')}</p>`; // Using noLists for empty watchlist too for now or create a new key
-    } else {
-        // Initial sort by rating
-        const sortedWatchlist = [...state.watchlist].sort((a, b) => b.rating - a.rating);
-        watchlistContainer.appendChild(renderGrid(sortedWatchlist, false, renderPageCallback));
-    }
-    mainContent.appendChild(watchlistContainer);
-
-    // Sort Handler
-    const sortSelect = document.getElementById('watchlist-sort-select');
-    if (sortSelect) {
-        sortSelect.addEventListener('change', (e) => {
-            const sortBy = e.target.value;
-            let sortedData = [...state.watchlist];
-
-            if (sortBy === 'name') {
-                sortedData.sort((a, b) => a.title.localeCompare(b.title));
-            } else if (sortBy === 'rating') {
-                sortedData.sort((a, b) => b.rating - a.rating);
-            } else if (sortBy === 'rating_asc') {
-                sortedData.sort((a, b) => a.rating - b.rating);
-            } else if (sortBy === 'year') {
-                sortedData.sort((a, b) => b.year - a.year);
-            }
-
-            watchlistContainer.innerHTML = '';
-            watchlistContainer.appendChild(renderGrid(sortedData, false, renderPageCallback));
-        });
-    }
 
     // Create List Modal Logic
     document.getElementById('create-list-btn').addEventListener('click', () => {

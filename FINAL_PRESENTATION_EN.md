@@ -380,6 +380,42 @@ resultCount.textContent =
 
 ---
 
+## Feature Spotlight: Custom Lists
+
+### 📝 Create New List
+
+**Purpose:** Empower users to organize content their way (Rule 7: Internal Locus of Control).
+
+**Implementation:**
+- **Modal Interface:** Clean, focused creation flow
+- **Smart Selection:** Search and select items dynamically
+- **Validation:** Prevents empty lists or missing names (Rule 5: Error Prevention)
+- **Feedback:** Immediate confirmation upon creation (Rule 4: Closure)
+
+**User Flow:**
+1. Click "Create New List"
+2. Enter List Name (e.g., "Weekend Marathon")
+3. Search & Select movies/series
+4. Click "Create"
+5. 🎉 Toast: "List 'Weekend Marathon' created!"
+
+**Code Highlight:**
+```javascript
+// src/utils/state.js
+export function createList(name, items) {
+  const newList = {
+    id: Date.now(),
+    name: name,
+    items: items,
+    createdAt: new Date().toISOString()
+  };
+  state.customLists.push(newList);
+  return newList;
+}
+```
+
+---
+
 ## Additional Features
 
 ### 🔵 Blue Light Filter

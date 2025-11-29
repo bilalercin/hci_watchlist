@@ -38,6 +38,7 @@ export const translations = {
 
         // Lists Page
         listsTitle: "Your Lists",
+        myLists: "My Lists",
         createList: "Create New List",
         noLists: "You haven't created any lists yet.",
         createListModalTitle: "Create New List",
@@ -64,8 +65,8 @@ export const translations = {
         nameLabel: "Name",
         lastNameLabel: "Last Name",
         bioLabel: "Bio",
-        myMovies: "My Movies",
-        noRatedMovies: "You haven't rated any movies yet.",
+        myMovies: "Rated Content",
+        noRatedMovies: "You haven't rated any content yet.",
         memberSince: "Member since 2024",
         currentRank: "Current Rank",
         rankSystem: "Rank System",
@@ -144,6 +145,7 @@ export const translations = {
 
         // Lists Page
         listsTitle: "Listelerin",
+        myLists: "Listelerim",
         createList: "Yeni Liste Oluştur",
         noLists: "Henüz hiç liste oluşturmadın.",
         createListModalTitle: "Yeni Liste Oluştur",
@@ -170,8 +172,8 @@ export const translations = {
         nameLabel: "İsim",
         lastNameLabel: "Soyisim",
         bioLabel: "Biyografi",
-        myMovies: "Filmlerim",
-        noRatedMovies: "Henüz hiç film puanlamadın.",
+        myMovies: "Değerlendirilen İçerikler",
+        noRatedMovies: "Henüz hiç içerik puanlamadın.",
         memberSince: "2024'ten beri üye",
         currentRank: "Mevcut Rütbe",
         rankSystem: "Rütbe Sistemi",

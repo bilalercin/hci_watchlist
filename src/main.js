@@ -4,6 +4,7 @@ import { initializeNavbar, updateNavActiveState } from './components/navbar.js';
 import { renderMoviesPage } from './pages/movies.js';
 import { renderSeriesPage } from './pages/series.js';
 import { renderListsPage } from './pages/lists.js';
+import { renderWatchlistPage } from './pages/watchlist.js';
 import { renderMyMoviesPage } from './pages/myMovies.js';
 import { renderProfilePage } from './pages/profile.js';
 
@@ -22,6 +23,9 @@ function renderPage(pageName) {
       break;
     case 'lists':
       renderListsPage(renderPage);
+      break;
+    case 'watchlist':
+      renderWatchlistPage(renderPage);
       break;
     case 'my-movies':
       renderMyMoviesPage(renderPage);
